@@ -90,18 +90,20 @@
 
 
 
-<meta name="description" content="这是 React 进阶系列的第一篇文章，这个系列内容会包括一些 React 的新知识以及原理内容，有兴趣的可以持续关注。  注意：Hooks 在 React 16.8 版本中才正式发布 为什么要用 Hooks组件嵌套问题之前如果我们需要抽离一些重复的逻辑，就会选择 HOC 或者 render props 的方式。但是通过这样的方式去实现组件，你打开 React DevTools 就会发现组件被各">
+<meta name="description" content="这是 React 进阶系列的第一篇文章，这个系列内容会包括一些 React 的新知识以及原理内容，有兴趣的可以持续关注。  注意：Hooks 在 React 16.8 版本中才正式发布">
 <meta name="keywords" content="React,Hooks">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Hooks">
 <meta property="og:url" content="https://picsong.top/2019/04/05/hooks/index.html">
 <meta property="og:site_name" content="彭松的博客">
-<meta property="og:description" content="这是 React 进阶系列的第一篇文章，这个系列内容会包括一些 React 的新知识以及原理内容，有兴趣的可以持续关注。  注意：Hooks 在 React 16.8 版本中才正式发布 为什么要用 Hooks组件嵌套问题之前如果我们需要抽离一些重复的逻辑，就会选择 HOC 或者 render props 的方式。但是通过这样的方式去实现组件，你打开 React DevTools 就会发现组件被各">
+<meta property="og:description" content="这是 React 进阶系列的第一篇文章，这个系列内容会包括一些 React 的新知识以及原理内容，有兴趣的可以持续关注。  注意：Hooks 在 React 16.8 版本中才正式发布">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-04-27T09:18:34.047Z">
+<meta property="og:image" content="http://markdown-1259124001.cos.ap-chengdu.myqcloud.com/2019/04/27/d7c2654439e1ee6ba1e9a31fe4c3fe5f.jpg">
+<meta property="og:updated_time" content="2019-04-27T09:25:17.333Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hooks">
-<meta name="twitter:description" content="这是 React 进阶系列的第一篇文章，这个系列内容会包括一些 React 的新知识以及原理内容，有兴趣的可以持续关注。  注意：Hooks 在 React 16.8 版本中才正式发布 为什么要用 Hooks组件嵌套问题之前如果我们需要抽离一些重复的逻辑，就会选择 HOC 或者 render props 的方式。但是通过这样的方式去实现组件，你打开 React DevTools 就会发现组件被各">
+<meta name="twitter:description" content="这是 React 进阶系列的第一篇文章，这个系列内容会包括一些 React 的新知识以及原理内容，有兴趣的可以持续关注。  注意：Hooks 在 React 16.8 版本中才正式发布">
+<meta name="twitter:image" content="http://markdown-1259124001.cos.ap-chengdu.myqcloud.com/2019/04/27/d7c2654439e1ee6ba1e9a31fe4c3fe5f.jpg">
 
 
 
@@ -437,10 +439,12 @@
       
 
       
-        <blockquote>
+        <p><img src="http://markdown-1259124001.cos.ap-chengdu.myqcloud.com/2019/04/27/d7c2654439e1ee6ba1e9a31fe4c3fe5f.jpg" alt="u=1038618860,2385227474&amp;fm=15&amp;gp=0.jpg"></p>
+<blockquote>
 <p>这是 React 进阶系列的第一篇文章，这个系列内容会包括一些 React 的新知识以及原理内容，有兴趣的可以持续关注。</p>
 </blockquote>
 <p><strong>注意：Hooks 在 React 16.8 版本中才正式发布</strong></p>
+<a id="more"></a>
 <h2 id="为什么要用-Hooks"><a href="#为什么要用-Hooks" class="headerlink" title="为什么要用 Hooks"></a>为什么要用 Hooks</h2><h3 id="组件嵌套问题"><a href="#组件嵌套问题" class="headerlink" title="组件嵌套问题"></a>组件嵌套问题</h3><p>之前如果我们需要抽离一些重复的逻辑，就会选择 HOC 或者 render props 的方式。但是通过这样的方式去实现组件，你打开 React DevTools 就会发现组件被各种其他组件包裹在里面。这种方式首先提高了 debug 的难度，并且也很难实现共享状态。</p>
 <p>但是通过 Hooks 的方式去抽离重复逻辑的话，一是不会增加组件的嵌套，二是可以实现状态的共享。</p>
 <h3 id="class-组件的问题"><a href="#class-组件的问题" class="headerlink" title="class 组件的问题"></a>class 组件的问题</h3><p>如果我们需要一个管理状态的组件，那么就必须使用 class 的方式去创建一个组件。但是一旦 class 组件变得复杂，那么四散的代码就很不容易维护。另外 class 组件通过 Babel 编译出来的代码也相比函数组件多得多。</p>
@@ -683,7 +687,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -694,7 +698,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -705,7 +709,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">15</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -840,7 +844,7 @@
   
   <div class="theme-info">
 	<div class="powered-by"><i class="fa fa-user-md"></i></div>
-	<span class="post-count">博客全站共 16.3k 字</span>
+	<span class="post-count">博客全站共 19.4k 字</span>
 	</div>
 </div>
 
