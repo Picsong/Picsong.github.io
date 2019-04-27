@@ -90,20 +90,18 @@
 
 
 
-<meta name="description" content="这里就是摘要了，应该有张图在上面！">
+<meta name="description" content="这是 React 进阶系列的第一篇文章，这个系列内容会包括一些 React 的新知识以及原理内容，有兴趣的可以持续关注。  注意：Hooks 在 React 16.8 版本中才正式发布 为什么要用 Hooks组件嵌套问题之前如果我们需要抽离一些重复的逻辑，就会选择 HOC 或者 render props 的方式。但是通过这样的方式去实现组件，你打开 React DevTools 就会发现组件被各">
 <meta name="keywords" content="React,Hooks">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Hooks">
 <meta property="og:url" content="https://picsong.top/2019/04/05/hooks/index.html">
 <meta property="og:site_name" content="彭松的博客">
-<meta property="og:description" content="这里就是摘要了，应该有张图在上面！">
+<meta property="og:description" content="这是 React 进阶系列的第一篇文章，这个系列内容会包括一些 React 的新知识以及原理内容，有兴趣的可以持续关注。  注意：Hooks 在 React 16.8 版本中才正式发布 为什么要用 Hooks组件嵌套问题之前如果我们需要抽离一些重复的逻辑，就会选择 HOC 或者 render props 的方式。但是通过这样的方式去实现组件，你打开 React DevTools 就会发现组件被各">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://with.muyunyun.cn/1daa3d783a4a7ed7f742882a08a3aa09.jpg-400">
-<meta property="og:updated_time" content="2019-04-07T03:31:07.072Z">
+<meta property="og:updated_time" content="2019-04-27T09:18:34.047Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hooks">
-<meta name="twitter:description" content="这里就是摘要了，应该有张图在上面！">
-<meta name="twitter:image" content="http://with.muyunyun.cn/1daa3d783a4a7ed7f742882a08a3aa09.jpg-400">
+<meta name="twitter:description" content="这是 React 进阶系列的第一篇文章，这个系列内容会包括一些 React 的新知识以及原理内容，有兴趣的可以持续关注。  注意：Hooks 在 React 16.8 版本中才正式发布 为什么要用 Hooks组件嵌套问题之前如果我们需要抽离一些重复的逻辑，就会选择 HOC 或者 render props 的方式。但是通过这样的方式去实现组件，你打开 React DevTools 就会发现组件被各">
 
 
 
@@ -402,7 +400,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  617
+                  2k
                 </span>
               
 
@@ -418,7 +416,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  2
+                  8
                 </span>
               
             </div>
@@ -439,45 +437,54 @@
       
 
       
-        <p><img src="http://with.muyunyun.cn/1daa3d783a4a7ed7f742882a08a3aa09.jpg-400" alt><br>这里就是摘要了，应该有张图在上面！<br><a id="more"></a></p>
-<h3 id="Hooks-每次渲染带着一切"><a href="#Hooks-每次渲染带着一切" class="headerlink" title="Hooks 每次渲染带着一切"></a>Hooks 每次渲染带着一切</h3><ul>
-<li>在 <code>hooks</code> 中每一次 <code>render</code> 都有自己的 <code>state</code> 和 <code>props</code>, 这和 <code>class</code> 中有点差异，见 <a href="https://overreacted.io/a-complete-guide-to-useeffect/#each-render-has-its-own-everything" target="_blank" rel="noopener">each-render-has-its-own-everything</a></li>
-</ul>
-<blockquote>
-<p><code>class</code> 中可以用闭包模拟 <code>hooks</code> 的表现; <code>hooks</code> 中可以使用 <code>ref</code> 模拟 <code>class</code> 的表现, 或者在第二个参数传入需要鉴别的参数;</p>
+        <blockquote>
+<p>这是 React 进阶系列的第一篇文章，这个系列内容会包括一些 React 的新知识以及原理内容，有兴趣的可以持续关注。</p>
 </blockquote>
-<h3 id="诚实地写出-useEffect-的所有依赖"><a href="#诚实地写出-useEffect-的所有依赖" class="headerlink" title="诚实地写出 useEffect 的所有依赖"></a>诚实地写出 useEffect 的所有依赖</h3><p>在以下 <code>demo</code> 中, <code>useEffect</code> 的第二个参数传入 <code>[]</code>, 希望 <code>useEffect</code> 里的函数只执行一次(类似在 <code>componentDidMount</code> 中执行一次), 页面上每隔 1s 递增 1。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Demo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> [count, setCount] = useState(<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">  useEffect(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> id = setInterval(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">      setCount(count + <span class="number">1</span>);</span><br><span class="line">    &#125;, <span class="number">1000</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">      clearInterval(id);</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;, []);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> count;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>但达到我们预期的效果了么? <a href="https://codesandbox.io/s/n3o2m1wpj4" target="_blank" rel="noopener">demo</a>, 可以看到界面上只增加到 1 就停止了。原因就是传入的第二个参数 <code>[]</code> 搞的鬼, <code>[]</code> 表示没有外界状态对 <code>effect</code> 产生干扰。流程大致如下:</p>
-<ol>
-<li>第一次调用 <code>useEffect</code> 传入的 <code>count</code> 为 0, 于是 <code>setCount(0 + 1)</code>;</li>
-<li>受 <code>useEffect</code> 第二个参数 <code>[]</code> 的影响，所以相当于还是 <code>setCount(0 + 1)</code>;</li>
-</ol>
-<p>那如何修正上述问题呢? 方法有两个(方法一为主, 方法二为辅):</p>
+<p><strong>注意：Hooks 在 React 16.8 版本中才正式发布</strong></p>
+<h2 id="为什么要用-Hooks"><a href="#为什么要用-Hooks" class="headerlink" title="为什么要用 Hooks"></a>为什么要用 Hooks</h2><h3 id="组件嵌套问题"><a href="#组件嵌套问题" class="headerlink" title="组件嵌套问题"></a>组件嵌套问题</h3><p>之前如果我们需要抽离一些重复的逻辑，就会选择 HOC 或者 render props 的方式。但是通过这样的方式去实现组件，你打开 React DevTools 就会发现组件被各种其他组件包裹在里面。这种方式首先提高了 debug 的难度，并且也很难实现共享状态。</p>
+<p>但是通过 Hooks 的方式去抽离重复逻辑的话，一是不会增加组件的嵌套，二是可以实现状态的共享。</p>
+<h3 id="class-组件的问题"><a href="#class-组件的问题" class="headerlink" title="class 组件的问题"></a>class 组件的问题</h3><p>如果我们需要一个管理状态的组件，那么就必须使用 class 的方式去创建一个组件。但是一旦 class 组件变得复杂，那么四散的代码就很不容易维护。另外 class 组件通过 Babel 编译出来的代码也相比函数组件多得多。</p>
+<p>Hooks 能够让我们通过函数组件的方式去管理状态，并且也能将四散的业务逻辑写成一个个 Hooks 便于复用以及维护。</p>
+<h2 id="Hooks-怎么用"><a href="#Hooks-怎么用" class="headerlink" title="Hooks 怎么用"></a>Hooks 怎么用</h2><p>前面说了一些 Hooks 的好处，接下来我们就进入正题，通过实现一个计数器来学习几个常用的 Hooks。</p>
+<h3 id="useState"><a href="#useState" class="headerlink" title="useState"></a>useState</h3><p><code>useState</code> 的用法很简单，传入一个初始 <code>state</code>，返回一个 <code>state</code> 以及修改 <code>state</code> 的函数。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">// useState 返回的 state 是个常量</span><br><span class="line">// 每次组件重新渲染之后，当前 state 和之前的 state 都不相同</span><br><span class="line">// 即使这个 state 是个对象</span><br><span class="line">const [count, setCount] = useState(1)</span><br></pre></td></tr></table></figure>
+<p><code>setCount</code> 用法是和 <code>setState</code> 一样的，可以传入一个新的状态或者函数。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">setCount(2)</span><br><span class="line">setCount(prevCount =&gt; prevCount + 1)</span><br></pre></td></tr></table></figure>
+<p><code>useState</code> 的用法是不是很简单。假如现在需要我们实现一个计数器，按照之前的方式只能通过 class 的方式去写，但是现在我们可以通过函数组件 + Hooks 的方式去实现这个功能。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">function Counter() &#123;</span><br><span class="line">  const [count, setCount] = React.useState(0)</span><br><span class="line">  return (</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">      Count: &#123;count&#125;</span><br><span class="line">      &lt;button onClick=&#123;() =&gt; setCount(prevCount =&gt; prevCount + 1)&#125;&gt;+&lt;/button&gt;</span><br><span class="line">      &lt;button onClick=&#123;() =&gt; setCount(prevCount =&gt; prevCount - 1)&#125;&gt;-&lt;/button&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="useEffect"><a href="#useEffect" class="headerlink" title="useEffect"></a>useEffect</h3><p>现在我们的计时器需求又升级了，需要在<strong>组件更新</strong>以后打印出当前的计数，这时候我们可以通过 <code>useEffect</code>来实现</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">function Counter() &#123;</span><br><span class="line">  const [count, setCount] = React.useState(0)</span><br><span class="line">  </span><br><span class="line">  React.useEffect(() =&gt; &#123;</span><br><span class="line">    console.log(count)</span><br><span class="line">  &#125;)</span><br><span class="line">  </span><br><span class="line">  return (</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">      Count: &#123;count&#125;</span><br><span class="line">      &lt;button onClick=&#123;() =&gt; setCount(prevCount =&gt; prevCount + 1)&#125;&gt;+&lt;/button&gt;</span><br><span class="line">      &lt;button onClick=&#123;() =&gt; setCount(prevCount =&gt; prevCount - 1)&#125;&gt;-&lt;/button&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>以上代码当我们改变计数的时候，就会打印出正确的计数，我们其实基本可以把 <code>useEffect</code> 看成是 <code>componentDidUpdate</code>，它们的区别我们可以在下一个例子中看到。</p>
+<p>另外 <code>useEffect</code> 还可以返回一个函数，功能类似于 <code>componentWillUnmount</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">function Counter() &#123;</span><br><span class="line">  const [count, setCount] = React.useState(0)</span><br><span class="line">  </span><br><span class="line">  React.useEffect(() =&gt; &#123;</span><br><span class="line">    console.log(count)</span><br><span class="line">    return () =&gt; console.log(&apos;clean&apos;, count)</span><br><span class="line">  &#125;)</span><br><span class="line">  </span><br><span class="line">  // ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>当我们每次更新计数时，都会先打印 <code>clean</code> 这行 log</p>
+<p>现在我们的需求再次升级了，需要我们在计数器更新以后延时两秒打印出计数。实现这个再简单不过了，我们改造下 <code>useEffect</code> 内部的代码即可</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">React.useEffect(() =&gt; &#123;</span><br><span class="line">    setTimeout(() =&gt; &#123;</span><br><span class="line">        console.log(count)</span><br><span class="line">    &#125;, 2000)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>当我们快速点击按钮后，可以在两秒延时以后看到正确的计数。但是如果我们将这段代码写到 <code>componentDidUpdate</code> 中，事情就变得不一样了。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">componentDidUpdate() &#123;</span><br><span class="line">    setTimeout(() =&gt; &#123;</span><br><span class="line">        console.log(this.state.count)</span><br><span class="line">    &#125;, 2000)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>对于这段代码来说，如果我们快速点击按钮，你会在延时两秒后看到打印出了相同的几个计数。这是因为在 <code>useEffect</code> 中我们通过闭包的方式每次都捕获到了正确的计数。但是在 <code>componentDidUpdate</code> 中，通过 <code>this.state.count</code> 的方式只能拿到最新的状态，因为这是一个对象。</p>
+<p>当然如果你只想拿到最新的 <code>state</code> 的话，你可以使用 <code>useRef</code> 来实现。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">function Counter() &#123;</span><br><span class="line">  const [count, setCount] = React.useState(0)</span><br><span class="line">  const ref = React.useRef(count)</span><br><span class="line">  </span><br><span class="line">  React.useEffect(() =&gt; &#123;</span><br><span class="line">    ref.current = count</span><br><span class="line">    setTimeout(() =&gt; &#123;</span><br><span class="line">        console.log(ref.current)</span><br><span class="line">    &#125;, 2000)</span><br><span class="line">  &#125;)</span><br><span class="line">  </span><br><span class="line">  //...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>useRef</code> 可以用来存储任何会改变的值，解决了在函数组件上不能通过实例去存储数据的问题。另外你还可以 <code>useRef</code> 来访问到改变之前的数据。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">function Counter() &#123;</span><br><span class="line">  const [count, setCount] = React.useState(0)</span><br><span class="line">  const ref = React.useRef()</span><br><span class="line">  </span><br><span class="line">  React.useEffect(() =&gt; &#123;</span><br><span class="line">    // 可以在重新赋值之前判断先前存储的数据和当前数据的区别</span><br><span class="line">    ref.current = count</span><br><span class="line">  &#125;)</span><br><span class="line">  </span><br><span class="line">  &lt;div&gt;</span><br><span class="line">      Count: &#123;count&#125;</span><br><span class="line">      PreCount: &#123;ref.current&#125;</span><br><span class="line">      &lt;button onClick=&#123;() =&gt; setCount(prevCount =&gt; prevCount + 1)&#125;&gt;+&lt;/button&gt;</span><br><span class="line">      &lt;button onClick=&#123;() =&gt; setCount(prevCount =&gt; prevCount - 1)&#125;&gt;-&lt;/button&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">  </span><br><span class="line">  //...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>现在需求再次升级，我们需要通过接口来获取初始计数，我们通过 <code>setTimeout</code> 来模拟这个行为。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">function Counter() &#123;</span><br><span class="line">  const [count, setCount] = React.useState();</span><br><span class="line">  const [loading, setLoading] = React.useState(true);</span><br><span class="line"></span><br><span class="line">  React.useEffect(() =&gt; &#123;</span><br><span class="line">    setLoading(true);</span><br><span class="line">    setTimeout(() =&gt; &#123;</span><br><span class="line">      setCount(1);</span><br><span class="line">      setLoading(false);</span><br><span class="line">    &#125;, 2000);</span><br><span class="line">  &#125;);</span><br><span class="line">  return (</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">      &#123;!loading ? (</span><br><span class="line">        &lt;div&gt;</span><br><span class="line">          Count: &#123;count&#125;</span><br><span class="line">          &lt;button onClick=&#123;() =&gt; setCount(pre =&gt; pre + 1)&#125;&gt;+&lt;/button&gt;</span><br><span class="line">          &lt;button onClick=&#123;() =&gt; setCount(pre =&gt; pre - 1)&#125;&gt;-&lt;/button&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">      ) : (</span><br><span class="line">        &lt;div&gt;loading&lt;/div&gt;</span><br><span class="line">      )&#125;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>如果你去执行这段代码，会发现 <code>useEffect</code> 无限执行。这是因为在 <code>useEffect</code> 内部再次触发了状态更新，因此 <code>useEffect</code> 会再次执行。</p>
+<p>解决这个问题我们可以通过 <code>useEffect</code> 的第二个参数解决</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">React.useEffect(() =&gt; &#123;</span><br><span class="line">    setLoading(true);</span><br><span class="line">    setTimeout(() =&gt; &#123;</span><br><span class="line">      setCount(1);</span><br><span class="line">      setLoading(false);</span><br><span class="line">    &#125;, 2000);</span><br><span class="line">&#125;, []);</span><br></pre></td></tr></table></figure>
+<p>第二个参数传入一个依赖数组，只有依赖的属性变更了，才会再次触发 <code>useEffect</code> 的执行。在上述例子中，我们传入一个空数组就代表这个 <code>useEffect</code> 只会执行一次。</p>
+<p>现在我们的代码有点丑陋了，可以将请求的这部分代码单独抽离成一个函数，你可能会这样写</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">const fetch = () =&gt; &#123;</span><br><span class="line">    setLoading(true);</span><br><span class="line">    setTimeout(() =&gt; &#123;</span><br><span class="line">      setCount(1);</span><br><span class="line">      setLoading(false);</span><br><span class="line">    &#125;, 2000);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">React.useEffect(() =&gt; &#123;</span><br><span class="line">    fetch()</span><br><span class="line">&#125;, [fetch]);</span><br></pre></td></tr></table></figure>
+<p>但是这段代码出现的问题和一开始的是一样的，还是会无限执行。这是因为虽然你传入了依赖，但是每次组件更新的时候 <code>fetch</code> 都会重新创建，因此 <code>useEffect</code> 认为依赖已经更新了，所以再次执行回调。</p>
+<p>解决这个问题我们需要使用到一个新的 Hooks <code>useCallback</code>。这个 Hooks 可以生成一个不随着组件更新而再次创建的 callback，接下来我们通过这个 Hooks 再次改造下代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">const fetch = React.useCallback(() =&gt; &#123;</span><br><span class="line">    setLoading(true);</span><br><span class="line">    setTimeout(() =&gt; &#123;</span><br><span class="line">      setCount(1);</span><br><span class="line">      setLoading(false);</span><br><span class="line">    &#125;, 2000);</span><br><span class="line">&#125;, [])</span><br><span class="line"></span><br><span class="line">React.useEffect(() =&gt; &#123;</span><br><span class="line">    fetch()</span><br><span class="line">&#125;, [fetch]);</span><br></pre></td></tr></table></figure>
+<p>大功告成，我们已经通过几个 Hooks + 函数组件完美实现了原本需要 class 组件才能完成的事情。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>通过几个计数器的需求我们学习了一些常用的 Hooks，接下来总结一下这部分的内容。</p>
 <ul>
-<li>方法一: 将 <code>[]</code> 改为 <code>[count]</code></li>
-<li>方法二: 将 <code>setCount(count + 1)</code> 改为 <code>setCount(count =&gt; count + 1)</code>。这种方法的思想是修正状态的值而不依赖外面传进的状态。</li>
-</ul>
-<p>不过遇到 <code>setCount(count =&gt; count + 1)</code> 的情况就可以考虑使用 <code>useReducer</code> 了。</p>
-<h3 id="useReducer"><a href="#useReducer" class="headerlink" title="useReducer"></a>useReducer</h3><p><code>useReducer</code> 将行为(dispatch) 和展现抽离开。</p>
-<p>当更新的一个状态依赖于另一个状态时, 使用 <code>useReducer</code> 能避免调用多次 <code>useEffect</code>。见 <a href="https://overreacted.io/a-complete-guide-to-useeffect/#decoupling-updates-from-actions" target="_blank" rel="noopener">decoupling-updates-from-actions</a></p>
-<h3 id="useEffect-中公用函数的逻辑"><a href="#useEffect-中公用函数的逻辑" class="headerlink" title="useEffect 中公用函数的逻辑"></a>useEffect 中公用函数的逻辑</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Demo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> [count, setCount] = useState(<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">getFetchUrl</span>(<span class="params">query</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">`http://demo<span class="subst">$&#123;query&#125;</span>`</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  useEffect(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> url = getFetchUrl(<span class="string">'react'</span>)</span><br><span class="line">  &#125;, [getFetchUrl]);</span><br><span class="line"></span><br><span class="line">  useEffect(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> url = getFetchUrl(<span class="string">'redux'</span>)</span><br><span class="line">  &#125;, [getFetchUrl]);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> count;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>此时 <code>useEffect</code> 中传入的第二个参数 <code>getFetchUrl</code> 相当于每次都是新的, 所以每次都会请求数据, 那除了 <code>[getFetchUrl]</code> 将改为 <code>[]</code> 这种不推荐的写法外，有两种解决方法:</p>
-<ol>
-<li>提升 <code>getFetchUrl</code> 的作用域</li>
-<li>使用 <code>useCallback</code>(<code>useCallback</code> 的作用类似 <code>useMemo</code>)</li>
-</ol>
-<blockquote>
-<p><code>React.memo</code> 修饰一个函数组件, <code>useMemo</code> 修饰一个函数。它们本质都是运用缓存。</p>
-</blockquote>
-<h3 id="todo"><a href="#todo" class="headerlink" title="todo"></a>todo</h3><ul>
-<li style="list-style: none"><input type="checkbox"> 完善 Each Render Has Its Own Everything 例子</li>
-<li style="list-style: none"><input type="checkbox"> <a href="https://www.robinwieruch.de/react-hooks-fetch-data/" target="_blank" rel="noopener">How to fetch data with React Hooks?</a>: 计划读, 可能涉及 susepense</li>
-</ul>
-<h3 id="相关资源"><a href="#相关资源" class="headerlink" title="相关资源"></a>相关资源</h3><ul>
-<li><a href="https://github.com/rehooks/awesome-react-hooks" target="_blank" rel="noopener">awesome-react-hooks</a></li>
-<li><a href="https://github.com/gragland/usehooks" target="_blank" rel="noopener">usehooks</a></li>
-<li><a href="https://overreacted.io/a-complete-guide-to-useeffect/" target="_blank" rel="noopener">a-complete-guide-to-useeffect</a>: 一定要读 Dan 的这篇文章</li>
+<li>useState：传入我们所需的初始状态，返回一个<strong>常量</strong>状态以及改变状态的函数</li>
+<li>useEffect：第一个参数接受一个 callback，每次组件更新都会执行这个 callback，并且 callback 可以返回一个函数，该函数会在每次组件销毁前执行。如果 <code>useEffect</code> 内部有依赖外部的属性，并且希望依赖属性不改变就不重复执行 <code>useEffect</code> 的话，可以传入一个依赖数组作为第二个参数</li>
+<li>useRef：如果你需要有一个地方来存储变化的数据</li>
+<li>useCallback：如果你需要一个不会随着组件更新而重新创建的 callback</li>
 </ul>
 
       
@@ -508,7 +515,7 @@
   <p><span>本文标题:</span><a href="/2019/04/05/hooks/">Hooks</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 彭松 的个人博客">彭松</a></p>
   <p><span>发布时间:</span>2019年04月05日 - 23:04</p>
-  <p><span>最后更新:</span>2019年04月07日 - 11:04</p>
+  <p><span>最后更新:</span>2019年04月27日 - 17:04</p>
   <p><span>原始链接:</span><a href="/2019/04/05/hooks/" title="Hooks">https://picsong.top/2019/04/05/hooks/</a>
     <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://picsong.top/2019/04/05/hooks/" aria-label="复制成功！"></i></span>
   </p>
@@ -776,7 +783,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Hooks-每次渲染带着一切"><span class="nav-number">1.</span> <span class="nav-text">Hooks 每次渲染带着一切</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#诚实地写出-useEffect-的所有依赖"><span class="nav-number">2.</span> <span class="nav-text">诚实地写出 useEffect 的所有依赖</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#useReducer"><span class="nav-number">3.</span> <span class="nav-text">useReducer</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#useEffect-中公用函数的逻辑"><span class="nav-number">4.</span> <span class="nav-text">useEffect 中公用函数的逻辑</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#todo"><span class="nav-number">5.</span> <span class="nav-text">todo</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#相关资源"><span class="nav-number">6.</span> <span class="nav-text">相关资源</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#为什么要用-Hooks"><span class="nav-number">1.</span> <span class="nav-text">为什么要用 Hooks</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#组件嵌套问题"><span class="nav-number">1.1.</span> <span class="nav-text">组件嵌套问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#class-组件的问题"><span class="nav-number">1.2.</span> <span class="nav-text">class 组件的问题</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hooks-怎么用"><span class="nav-number">2.</span> <span class="nav-text">Hooks 怎么用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#useState"><span class="nav-number">2.1.</span> <span class="nav-text">useState</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#useEffect"><span class="nav-number">2.2.</span> <span class="nav-text">useEffect</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">3.</span> <span class="nav-text">总结</span></a></li></ol></div>
             
 
           </div>
@@ -833,7 +840,7 @@
   
   <div class="theme-info">
 	<div class="powered-by"><i class="fa fa-user-md"></i></div>
-	<span class="post-count">博客全站共 14.9k 字</span>
+	<span class="post-count">博客全站共 16.3k 字</span>
 	</div>
 </div>
 
