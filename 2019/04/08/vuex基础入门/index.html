@@ -94,19 +94,19 @@
 <meta name="keywords" content="Vue,vuex">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Vuex基础入门">
-<meta property="og:url" content="https://picsong.top/2019/04/08/vuex学习总结1/index.html">
+<meta property="og:url" content="https://picsong.top/2019/04/08/vuex基础入门/index.html">
 <meta property="og:site_name" content="彭松的博客">
 <meta property="og:description" content="通过这篇文章你能快速学习到关于vuex的知识，我们还是围绕官网的vuex教程来学习它的核心概念，如果你了解redux学习起来会感觉异常轻松。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://markdown-1259124001.cos.ap-chengdu.myqcloud.com/2019/04/27/4f5778164d0773b380bd318cf30b7bd3.jpg">
-<meta property="og:image" content="http://markdown-1259124001.cos.ap-chengdu.myqcloud.com/2019/04/27/55d5530305a74d99c1d93df40832607f.png">
-<meta property="og:image" content="http://markdown-1259124001.cos.ap-chengdu.myqcloud.com/2019/04/27/3df9fee55983aaddcb106339ca16a84c.png">
-<meta property="og:image" content="http://markdown-1259124001.cos.ap-chengdu.myqcloud.com/2019/04/27/ff3df3423f84e55caa5ff9bb6597e869.png">
-<meta property="og:updated_time" content="2019-04-27T09:08:49.128Z">
+<meta property="og:image" content="https://raw.githubusercontent.com/Picsong/cloudimg/master/e220e42e9f4ef1941c3e52df46abc275.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/Picsong/cloudimg/master/201904172105_44.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Picsong/cloudimg/master/20190429224414.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Picsong/cloudimg/master/201904172239_811.png">
+<meta property="og:updated_time" content="2019-04-29T14:45:09.274Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Vuex基础入门">
 <meta name="twitter:description" content="通过这篇文章你能快速学习到关于vuex的知识，我们还是围绕官网的vuex教程来学习它的核心概念，如果你了解redux学习起来会感觉异常轻松。">
-<meta name="twitter:image" content="http://markdown-1259124001.cos.ap-chengdu.myqcloud.com/2019/04/27/4f5778164d0773b380bd318cf30b7bd3.jpg">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/Picsong/cloudimg/master/e220e42e9f4ef1941c3e52df46abc275.jpg">
 
 
 
@@ -136,7 +136,7 @@
 
 
 
-  <link rel="canonical" href="https://picsong.top/2019/04/08/vuex学习总结1/">
+  <link rel="canonical" href="https://picsong.top/2019/04/08/vuex基础入门/">
 
 
 
@@ -311,7 +311,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://picsong.top/2019/04/08/vuex学习总结1/">
+    <link itemprop="mainEntityOfPage" href="https://picsong.top/2019/04/08/vuex基础入门/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="彭松">
@@ -380,7 +380,7 @@
 
           
           
-             <span id="/2019/04/08/vuex学习总结1/" class="leancloud_visitors" data-flag-title="Vuex基础入门">
+             <span id="/2019/04/08/vuex基础入门/" class="leancloud_visitors" data-flag-title="Vuex基础入门">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -442,21 +442,21 @@
       
 
       
-        <p><img src="http://markdown-1259124001.cos.ap-chengdu.myqcloud.com/2019/04/27/4f5778164d0773b380bd318cf30b7bd3.jpg" alt="u=2230252113,3526380990&amp;fm=26&amp;gp=0.jpg"></p>
+        <p><img src="https://raw.githubusercontent.com/Picsong/cloudimg/master/e220e42e9f4ef1941c3e52df46abc275.jpg" alt></p>
 <p>通过这篇文章你能快速学习到关于<a href="https://vuex.vuejs.org/zh/" target="_blank" rel="noopener">vuex</a>的知识，我们还是围绕官网的<code>vuex</code>教程来学习它的核心概念，如果你了解<a href="http://cn.redux.js.org/" target="_blank" rel="noopener">redux</a>学习起来会感觉异常轻松。</p>
 <a id="more"></a>
 <h2 id="Vuex是什么？"><a href="#Vuex是什么？" class="headerlink" title="Vuex是什么？"></a>Vuex是什么？</h2><p>Vuex 是一个专为 Vue.js 应用程序开发的<strong>状态管理模式</strong>。它采用集中式存储管理应用的所有组件的状态，并以相应的规则保证状态以一种可预测的方式发生变化。Vuex 也集成到 Vue 的官方调试工具 <a href="https://github.com/vuejs/vue-devtools" target="_blank" rel="noopener">devtools extension</a>，提供了诸如零配置的 time-travel 调试、状态快照导入导出等高级调试功能，下面我们将围绕下图进行分析。</p>
-<p><img src="http://markdown-1259124001.cos.ap-chengdu.myqcloud.com/2019/04/27/55d5530305a74d99c1d93df40832607f.png" alt="201904172105_44.png"></p>
+<p><img src="https://raw.githubusercontent.com/Picsong/cloudimg/master/201904172105_44.png" alt></p>
 <h2 id="vuex的核心概念"><a href="#vuex的核心概念" class="headerlink" title="vuex的核心概念"></a>vuex的核心概念</h2><p>每一个 Vuex 应用的核心就是 store（仓库）。“store”基本上就是一个容器，它包含着你的应用中大部分的<strong>状态 (state)</strong>。Vuex 和单纯的全局对象有以下两点不同：</p>
 <ol>
 <li>Vuex 的状态存储是响应式的。当 Vue 组件从 store 中读取状态的时候，若 store 中的状态发生变化，那么相应的组件也会相应地得到高效更新。</li>
 <li>你不能直接改变 store 中的状态。改变 store 中的状态的唯一途径就是显式地<strong>提交 (commit) mutation</strong>。这样使得我们可以方便地跟踪每一个状态的变化，从而让我们能够实现一些工具帮助我们更好地了解我们的应用。</li>
 </ol>
 <p>我们对上图进行简单的分析，有助于我们接下来的学习。我们从数据出发也就是state，数据再到我们的Vue components，里面又可以通过dispatch触发不同的actions，在我们的actions里面我们可以做很多事，比如调用后台接口请求数据做一些异步的操作，也可以做一些事务性操作，因为在actions中可以拿到全局的任意属性方法。比如我们这里发起请求拿到了数据，要想加到state中，就要遵循上面的第二条，通过提交一个commit,执行对应的mutation方法，把我们的数据加到state中。下面我们就通过一个待办事项例子来学习。</p>
-<p><img src="http://markdown-1259124001.cos.ap-chengdu.myqcloud.com/2019/04/27/3df9fee55983aaddcb106339ca16a84c.png" alt="201904172301_883.png"></p>
+<p><img src="https://raw.githubusercontent.com/Picsong/cloudimg/master/20190429224414.png" alt></p>
 <h2 id="State"><a href="#State" class="headerlink" title="State"></a>State</h2><p>Vuex 使用<strong>单一状态树</strong>——是的，用一个对象就包含了全部的应用层级状态。至此它便作为一个“唯一数据源 (<a href="https://en.wikipedia.org/wiki/Single_source_of_truth" target="_blank" rel="noopener">SSOT</a>)”而存在。这也意味着，每个应用将仅仅包含一个 store 实例。单一状态树让我们能够直接地定位任一特定的状态片段，在调试的过程中也能轻易地取得整个当前应用状态的快照。</p>
 <p>在开始代码示例之前先确保你的项目结构和我一样，使用vue-cli3.0以上版本。并自定义配置安装了vuex,和babel.如图：有一些我们暂时不会用到。</p>
-<p><img src="http://markdown-1259124001.cos.ap-chengdu.myqcloud.com/2019/04/27/ff3df3423f84e55caa5ff9bb6597e869.png" alt="201904172239_811.png"></p>
+<p><img src="https://raw.githubusercontent.com/Picsong/cloudimg/master/201904172239_811.png" alt></p>
 <p>简单解释一下，我们的文件。assets里面存放一些，图片资源，components是放我们一些组件的功能性组件。serve是异步请求的一些方法，store是我们自己创建的文件夹用于管理各种组件的状态。view是一些页面级组件。</p>
 <p>store.js是它自带的，具体里面怎么写看下面代码：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//store.js</span></span><br><span class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">'vue'</span></span><br><span class="line"><span class="keyword">import</span> Vuex <span class="keyword">from</span> <span class="string">'vuex'</span></span><br><span class="line"><span class="keyword">import</span> todoList <span class="keyword">from</span> <span class="string">'./store/todoList'</span></span><br><span class="line">Vue.use(Vuex)</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">new</span> Vuex.Store(&#123;</span><br><span class="line">  state: &#123;</span><br><span class="line">    index: <span class="number">3</span>,</span><br><span class="line">    filter: <span class="string">"ALL"</span>,</span><br><span class="line">    todos: [</span><br><span class="line">      &#123;</span><br><span class="line">        id: <span class="number">0</span>,</span><br><span class="line">        text: <span class="string">"HTML"</span>,</span><br><span class="line">        completed: <span class="literal">false</span>,</span><br><span class="line">        flag: <span class="literal">true</span></span><br><span class="line">      &#125;,</span><br><span class="line">      &#123;</span><br><span class="line">        id: <span class="number">1</span>,</span><br><span class="line">        text: <span class="string">"CSS"</span>,</span><br><span class="line">        completed: <span class="literal">true</span>,</span><br><span class="line">        flag: <span class="literal">true</span></span><br><span class="line">      &#125;,</span><br><span class="line">      &#123;</span><br><span class="line">        id: <span class="number">2</span>,</span><br><span class="line">        text: <span class="string">"JAVASCRIPT"</span>,</span><br><span class="line">        completed: <span class="literal">false</span>,</span><br><span class="line">        flag: <span class="literal">true</span></span><br><span class="line">      &#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
@@ -514,12 +514,12 @@
   <script type="text/javascript" src="http://jslibs.wuxubj.cn/sweetalert_mini/jquery-1.7.1.min.js"></script>
   <script src="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.min.js"></script>
   <link rel="stylesheet" type="text/css" href="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.mini.css">
-  <p><span>本文标题:</span><a href="/2019/04/08/vuex学习总结1/">Vuex基础入门</a></p>
+  <p><span>本文标题:</span><a href="/2019/04/08/vuex基础入门/">Vuex基础入门</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 彭松 的个人博客">彭松</a></p>
   <p><span>发布时间:</span>2019年04月08日 - 23:04</p>
-  <p><span>最后更新:</span>2019年04月27日 - 17:04</p>
-  <p><span>原始链接:</span><a href="/2019/04/08/vuex学习总结1/" title="Vuex基础入门">https://picsong.top/2019/04/08/vuex学习总结1/</a>
-    <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://picsong.top/2019/04/08/vuex学习总结1/" aria-label="复制成功！"></i></span>
+  <p><span>最后更新:</span>2019年04月29日 - 22:04</p>
+  <p><span>原始链接:</span><a href="/2019/04/08/vuex基础入门/" title="Vuex基础入门">https://picsong.top/2019/04/08/vuex基础入门/</a>
+    <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://picsong.top/2019/04/08/vuex基础入门/" aria-label="复制成功！"></i></span>
   </p>
   <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
 </div>
@@ -594,8 +594,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/04/07/深入vue响应式原理/" rel="next" title="深入vue响应式原理">
-                <i class="fa fa-chevron-left"></i> 深入vue响应式原理
+              <a href="/2019/04/07/手摸手带你学JS第二篇/" rel="next" title="手摸手带你学JS第二篇">
+                <i class="fa fa-chevron-left"></i> 手摸手带你学JS第二篇
               </a>
             
           </div>
@@ -681,7 +681,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">12</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -703,7 +703,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-count">16</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -838,7 +838,7 @@
   
   <div class="theme-info">
 	<div class="powered-by"><i class="fa fa-user-md"></i></div>
-	<span class="post-count">博客全站共 19.4k 字</span>
+	<span class="post-count">博客全站共 22.1k 字</span>
 	</div>
 </div>
 
