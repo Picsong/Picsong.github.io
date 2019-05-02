@@ -77,7 +77,7 @@
 
 
 
-  <meta name="keywords" content="手摸手,JS基础,变量声明,">
+  <meta name="keywords" content="手摸手,JS基础,执行上下文,闭包,">
 
 
 
@@ -90,19 +90,24 @@
 
 
 
-<meta name="description" content="这是手摸手系列的第二篇文章，每篇文章的大致内容，是变量的声明的知识（不要小看这个）。我会从js基础、js高级、js-web、js-dom、其中会有许多基础知识理论，以及小练习。还会开个js-game板块，会有一些好玩的游戏。当然此系列也涉及到前端框架的知识。以及实战项目。学习完这个系列保证你会收获很多。更多请关注Github">
-<meta name="keywords" content="手摸手,JS基础,变量声明">
+<meta name="description" content="这是手摸手系列的第四篇文章，这篇文章的大致内容，在上一篇文章没有说完的执行上下文，以及闭包。我会从js基础、js高级、js-web、js-dom、其中会有许多基础知识理论，以及小练习。还会开个js-game板块，会有一些好玩的游戏。当然此系列也涉及到前端框架的知识。以及实战项目。学习完这个系列保证你会收获很多。更多请关注Github">
+<meta name="keywords" content="手摸手,JS基础,执行上下文,闭包">
 <meta property="og:type" content="article">
-<meta property="og:title" content="手摸手带你学JS第二篇">
-<meta property="og:url" content="https://picsong.top/2019/04/07/手摸手带你学JS第二篇/index.html">
+<meta property="og:title" content="手摸手带你学JS第四篇">
+<meta property="og:url" content="https://picsong.top/2019/04/09/手摸手带你学JS第四篇/index.html">
 <meta property="og:site_name" content="彭松的博客">
-<meta property="og:description" content="这是手摸手系列的第二篇文章，每篇文章的大致内容，是变量的声明的知识（不要小看这个）。我会从js基础、js高级、js-web、js-dom、其中会有许多基础知识理论，以及小练习。还会开个js-game板块，会有一些好玩的游戏。当然此系列也涉及到前端框架的知识。以及实战项目。学习完这个系列保证你会收获很多。更多请关注Github">
+<meta property="og:description" content="这是手摸手系列的第四篇文章，这篇文章的大致内容，在上一篇文章没有说完的执行上下文，以及闭包。我会从js基础、js高级、js-web、js-dom、其中会有许多基础知识理论，以及小练习。还会开个js-game板块，会有一些好玩的游戏。当然此系列也涉及到前端框架的知识。以及实战项目。学习完这个系列保证你会收获很多。更多请关注Github">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://raw.githubusercontent.com/Picsong/cloudimg/master/16778935-682d4f52285fd2be.jpg">
-<meta property="og:updated_time" content="2019-04-29T14:30:47.195Z">
+<meta property="og:image" content="https://raw.githubusercontent.com/Picsong/cloudimg/master/20190502160229.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/Picsong/cloudimg/master/20190502161305.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/Picsong/cloudimg/master/20190502163646.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Picsong/cloudimg/master/20190502164004.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Picsong/cloudimg/master/20190502200157.jpg">
+<meta property="og:updated_time" content="2019-05-02T13:36:48.816Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="手摸手带你学JS第二篇">
-<meta name="twitter:description" content="这是手摸手系列的第二篇文章，每篇文章的大致内容，是变量的声明的知识（不要小看这个）。我会从js基础、js高级、js-web、js-dom、其中会有许多基础知识理论，以及小练习。还会开个js-game板块，会有一些好玩的游戏。当然此系列也涉及到前端框架的知识。以及实战项目。学习完这个系列保证你会收获很多。更多请关注Github">
+<meta name="twitter:title" content="手摸手带你学JS第四篇">
+<meta name="twitter:description" content="这是手摸手系列的第四篇文章，这篇文章的大致内容，在上一篇文章没有说完的执行上下文，以及闭包。我会从js基础、js高级、js-web、js-dom、其中会有许多基础知识理论，以及小练习。还会开个js-game板块，会有一些好玩的游戏。当然此系列也涉及到前端框架的知识。以及实战项目。学习完这个系列保证你会收获很多。更多请关注Github">
 <meta name="twitter:image" content="https://raw.githubusercontent.com/Picsong/cloudimg/master/16778935-682d4f52285fd2be.jpg">
 
 
@@ -133,13 +138,13 @@
 
 
 
-  <link rel="canonical" href="https://picsong.top/2019/04/07/手摸手带你学JS第二篇/">
+  <link rel="canonical" href="https://picsong.top/2019/04/09/手摸手带你学JS第四篇/">
 
 
 
 
 
-  <title>手摸手带你学JS第二篇 | 彭松的博客</title>
+  <title>手摸手带你学JS第四篇 | 彭松的博客</title>
   
 
 
@@ -308,7 +313,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://picsong.top/2019/04/07/手摸手带你学JS第二篇/">
+    <link itemprop="mainEntityOfPage" href="https://picsong.top/2019/04/09/手摸手带你学JS第四篇/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="彭松">
@@ -325,7 +330,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">手摸手带你学JS第二篇</h1>
+          <h1 class="post-title" itemprop="name headline">手摸手带你学JS第四篇</h1>
         
 
         <div class="post-meta">
@@ -337,8 +342,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-07T08:20:44+08:00">
-                2019-04-07
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-09T16:23:44+08:00">
+                2019-04-09
               </time>
             
 
@@ -377,7 +382,7 @@
 
           
           
-             <span id="/2019/04/07/手摸手带你学JS第二篇/" class="leancloud_visitors" data-flag-title="手摸手带你学JS第二篇">
+             <span id="/2019/04/09/手摸手带你学JS第四篇/" class="leancloud_visitors" data-flag-title="手摸手带你学JS第四篇">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -402,7 +407,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  2.6k
+                  4.5k
                 </span>
               
 
@@ -418,7 +423,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  10
+                  16
                 </span>
               
             </div>
@@ -440,78 +445,88 @@
 
       
         <p><img src="https://raw.githubusercontent.com/Picsong/cloudimg/master/16778935-682d4f52285fd2be.jpg" alt></p>
-<p>这是手摸手系列的第二篇文章，每篇文章的大致内容，是变量的声明的知识（不要小看这个）。我会从js基础、js高级、js-web、js-dom、其中会有许多基础知识理论，以及小练习。还会开个js-game板块，会有一些好玩的游戏。当然此系列也涉及到前端框架的知识。以及实战项目。学习完这个系列保证你会收获很多。<a href="https://github.com/Picsong" target="_blank" rel="noopener">更多请关注Github</a></p>
+<p>这是手摸手系列的第四篇文章，这篇文章的大致内容，在上一篇文章没有说完的执行上下文，以及闭包。我会从js基础、js高级、js-web、js-dom、其中会有许多基础知识理论，以及小练习。还会开个js-game板块，会有一些好玩的游戏。当然此系列也涉及到前端框架的知识。以及实战项目。学习完这个系列保证你会收获很多。<a href="https://github.com/Picsong" target="_blank" rel="noopener">更多请关注Github</a></p>
 <a id="more"></a>
-<h2 id="var、let-及-const-区别"><a href="#var、let-及-const-区别" class="headerlink" title="var、let 及 const 区别"></a>var、let 及 const 区别</h2><blockquote>
-<p>涉及知识：什么是提升？什么是暂时性死区？var、let 及 const 区别？块级作用域又是什么？</p>
-</blockquote>
-<h3 id="var"><a href="#var" class="headerlink" title="var"></a>var</h3><p>对于这个问题，我们应该先来了解提升（hoisting）这个概念。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">console.log(a) // undefined</span><br><span class="line">var a = 1</span><br></pre></td></tr></table></figure>
-<p>从上述代码中我们可以发现，虽然变量还没有被声明，但是我们却可以使用这个未被声明的变量而没有报错。这种情况就叫做提升，并且提升的是声明。</p>
-<p>对于这种情况，我们可以把代码这样来看</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a</span><br><span class="line"><span class="built_in">console</span>.log(a) <span class="comment">// undefined</span></span><br><span class="line">a = <span class="number">1</span></span><br></pre></td></tr></table></figure>
-<p>接下来我们再来看一个例子</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">10</span></span><br><span class="line"><span class="keyword">var</span> a</span><br><span class="line"><span class="built_in">console</span>.log(a)</span><br></pre></td></tr></table></figure>
-<p>对于这个例子，如果你认为打印的值为 <code>undefined</code> 那么就错了，答案应该是 <code>10</code>，对于这种情况，我们这样来看代码</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a</span><br><span class="line"><span class="keyword">var</span> a</span><br><span class="line">a = <span class="number">10</span></span><br><span class="line"><span class="built_in">console</span>.log(a)</span><br></pre></td></tr></table></figure>
-<p>到这里为止，我们已经了解了 <code>var</code> 声明的变量会发生提升的情况，其实不仅变量会提升函数也会被提升。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(a) <span class="comment">// ƒ a() &#123;&#125;</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line"><span class="keyword">var</span> a = <span class="number">1</span></span><br></pre></td></tr></table></figure>
-<p>对于上述代码，打印结果会是 <code>ƒ a() {}</code>，即使变量声明在函数之后，这也说明了函数会被提升，并且优先于变量提升。</p>
-<p>说完了这些，想必大家也知道 <code>var</code> 存在的问题了，使用 <code>var</code> 声明的变量会被提升到作用域的顶部，接下来我们再来看 <code>let</code> 和 <code>const</code> 。</p>
-<h3 id="let"><a href="#let" class="headerlink" title="let"></a>let</h3><p>Es6新增了let命令,用来声明变量。它的用法类似var,但是所声明的变量，仅在let命令所在的代码块内有效。不存在在变量提升，以及可重复声明。我们先看一个例子来大致了解一下let命令结束。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line"> let a = 10;</span><br><span class="line"> var b = 12;</span><br><span class="line">&#125;</span><br><span class="line">var c = c;//不报错，因为预编译var变量会提升，值为undefined，所以执行的时候将undefined赋值给了c变量。</span><br><span class="line">let c = c;//这句话在执行时，会报错，c is not defined.</span><br><span class="line">console.log(a);//ReferenceError: a is not defined</span><br><span class="line">console.log(b);//12</span><br></pre></td></tr></table></figure>
-<p>这里解释下，一个花括号包起来的起来的地方并且内部有使用let声明变量，就可以看成是一个<code>块级作用域</code>。所以let声明的a只在括号内有效。所以在括号外使用是会报错的。</p>
-<h4 id="不存在变量提升"><a href="#不存在变量提升" class="headerlink" title="不存在变量提升"></a>不存在变量提升</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">console.log(a);//undefined</span><br><span class="line">console.log(b);//b is not defined</span><br><span class="line">var a = 1;</span><br><span class="line">let b = 2;</span><br></pre></td></tr></table></figure>
-<h4 id="不允许重复声明"><a href="#不允许重复声明" class="headerlink" title="不允许重复声明"></a>不允许重复声明</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">let不允许在同一作用域内，重复声明同一个变量。</span><br><span class="line">let a = 1;</span><br><span class="line">let a = 12;//SyntaxError a has ...been ....</span><br><span class="line">//因此不能再一个函数内部重新声明参数</span><br><span class="line">function foo(arg) &#123;</span><br><span class="line">	let arg;//SyntaxError a has ...been ....</span><br><span class="line">&#125;</span><br><span class="line">foo();</span><br><span class="line">function fun(arg)&#123;</span><br><span class="line">	&#123;</span><br><span class="line">		let arg;//不报错</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">fun()</span><br></pre></td></tr></table></figure>
-<h4 id="暂定性死区"><a href="#暂定性死区" class="headerlink" title="暂定性死区"></a>暂定性死区</h4><p>只要块级作用域内存在let命令，它所声明的变量就‘绑定’这个区域，不再受外部的影响</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var tmp = 123;</span><br><span class="line">if (true) &#123;</span><br><span class="line">	tmp = &apos;abc&apos;;//ReferenceError tmp is not defined</span><br><span class="line">	let tmp;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>原因上面的代码中，存在全局变量tmp，但是块级作用域内又let了一局部变量tmp,导致后者绑定这个块级作用域，所以在let声明前，对tmp赋值会报错。</p>
-<p>ES6明确规定如果区块中存在let和const命令，这个区块对这些命令声明的变量，从一开始就形成封闭作用域。凡是再声明之前就使用这些变量，就会报错。</p>
-<p>总之，在代码块内，使用let命令声明变量之前，该变量都是不可用的。在语法上叫做暂时性死区（TZD）</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">if (1) &#123;</span><br><span class="line">    //tzd开始</span><br><span class="line">    //tmp = &apos;1230&apos;; //ReferenveError</span><br><span class="line">    //console.log(tmp);//ReferenceError </span><br><span class="line"></span><br><span class="line">	let tmp;//tzd结束</span><br><span class="line">	console.log(tmp);//undefined</span><br><span class="line"></span><br><span class="line">	tmp = 123;</span><br><span class="line">	console.log(tmp);//123</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="therefore"><a href="#therefore" class="headerlink" title="therefore"></a>therefore</h4><p>因为这个暂时性死区，typeof 也不再是一个百分百安全的操作</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">console.log(a)//ReferenceError</span><br><span class="line">console.log(typeof a);//未经声明就操作一个变量，这里因为是typeof所以不报错，//undefined</span><br></pre></td></tr></table></figure>
-<p>但是</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">typeof x;//ReferenceError x is not defined</span><br><span class="line">let x;//因为使用了let在它之前使用它都是死区。</span><br></pre></td></tr></table></figure>
-<p>还有一些隐藏的死区，不易被发现</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">function bar(x = y, y = 1) &#123;</span><br><span class="line">    return [x, y]</span><br><span class="line">&#125;</span><br><span class="line">bar();</span><br><span class="line">//这里因为参数x的默认值等于另一个参数y, 而此时y还没有声明，属于死区。</span><br><span class="line">function bbr(y = 1, x = y) &#123;</span><br><span class="line">    console.log(y);</span><br><span class="line">    console.log(x);</span><br><span class="line">&#125;</span><br><span class="line">bbr();</span><br><span class="line">//这样就不会报错</span><br></pre></td></tr></table></figure>
-<h4 id="块级作用域"><a href="#块级作用域" class="headerlink" title="块级作用域"></a>块级作用域</h4><p>es5只有函数作用域和全局作用域，没有块级作用域，这带来很多不合理的场景。</p>
-<p>第一种场景，内层变量可能会覆盖外层变量</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">var tmp = new Date();</span><br><span class="line"></span><br><span class="line">function f() &#123;</span><br><span class="line"></span><br><span class="line">    console.log(tmp);</span><br><span class="line"></span><br><span class="line">    if (null) &#123;</span><br><span class="line"></span><br><span class="line">       var tmp = &apos;hello world&apos;//改成 let tmp = &apos;hello world&apos;就生成一个块级作用域，便不会提升它。</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">f();//undefined</span><br><span class="line"></span><br><span class="line">//原因是变量提升, 预编译过程中f的AO中&#123; tmp: undefined &#125;, 导致了内层的变量tmp覆盖了外层的tmp变量。</span><br></pre></td></tr></table></figure>
-<p>第二种场景，用于计数的for循环遍历泄露为全局变量。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">for (var i = 0; i &lt; 10; i++) &#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">console.log(i);//10</span><br></pre></td></tr></table></figure>
-<p>ES6<strong>的块级作用域</strong></p>
-<p>let实际上为javascript新增了块级作用域。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">//let实际上为javascript新增了块级作用域。</span><br><span class="line">function f1() &#123;</span><br><span class="line">    let n = 1;</span><br><span class="line">    if (1) &#123;</span><br><span class="line">        let n = 10;</span><br><span class="line">    &#125;</span><br><span class="line">    console.log(n);//1</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">f1();</span><br><span class="line">//而且允许块级作用域的任意嵌套。而且内层作用域可以定义与外层作用域同名的变量。</span><br><span class="line">&#123; &#123; &#123; &#123; &#123; let q = 123 &#125; let q = 234 &#125; &#125; &#125; &#125;;</span><br></pre></td></tr></table></figure>
-<p><strong>块级作用域与函数声明</strong></p>
-<p>函数能不能再块级作用域之中声明，是一个相当令人混淆的问题。</p>
-<p> ES5规定，函数只能再顶层作用域和函数作用域之中声明，不能再块级作用域声明。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">if (1) &#123;</span><br><span class="line">    function f() &#123; &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">try &#123;</span><br><span class="line">    function f1() &#123; &#125;</span><br><span class="line">&#125; catch (e) &#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">//这两种代码的函数声明，根据ES5的规定都是非法的。</span><br><span class="line">//但是浏览器没有遵守这个规定，为了兼容以前的旧代码，还是支持在块级作用域中声明函数，因此上面两种不会报错，不过严格模式会。</span><br></pre></td></tr></table></figure>
-<p>ES6引入了块级作用域，明确允许在块级作用域之中声明函数</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&apos;use strict&apos;;</span><br><span class="line">if(12)&#123;</span><br><span class="line">   function a()&#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"> //不会报错</span><br></pre></td></tr></table></figure>
-<p>es6规定，块级作用域之中，函数声明语句的行为类似于let,在块级作用域之外不可引用。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">function f() &#123;</span><br><span class="line">   console.log(&apos;I am outside!&apos;);</span><br><span class="line">&#125;</span><br><span class="line">(function () &#123;</span><br><span class="line">    if (false) &#123;</span><br><span class="line">        function f() &#123;</span><br><span class="line">           console.log(&apos;i am inside!&apos;);</span><br><span class="line">        &#125;</span><br><span class="line">     &#125;</span><br><span class="line">    f();//但是这段代码在chrome会报错。Uncaught TypeError: f is not a function</span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure>
-<p>在es5中会因为函数提升得到i am inside,es6中则为i am outside</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">//es5实际运行的是, 由于函数提升</span><br><span class="line">(function () &#123;</span><br><span class="line">    function f() &#123;</span><br><span class="line">        console.log(&apos;i am inside&apos;);</span><br><span class="line">    &#125;</span><br><span class="line">    if (false) &#123; &#125;</span><br><span class="line">    f();</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<p>es6由于规定，在块级作用域中声明的函数类似与let.对作用域之外没有影响，不会提升</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(function () &#123;</span><br><span class="line">    f();//if由于不满足条件，直接没写了，只剩下函数执行，得到i am outside</span><br><span class="line">&#125;)()</span><br></pre></td></tr></table></figure>
-<p>在chrome会报错，是因为运行的是下面的代码。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> f = <span class="literal">undefined</span>;</span><br><span class="line">    <span class="keyword">if</span> (<span class="literal">false</span>) &#123;</span><br><span class="line">        <span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params"></span>) </span>&#123; &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    f();<span class="comment">//f is not a function</span></span><br><span class="line">&#125;)()</span><br></pre></td></tr></table></figure>
-<p>所以考虑到环境导致的行为差异太大，应该避免在块级作用域内声明函数。如果确实需要也应该写成函数表达式。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    let a = 123;</span><br><span class="line">    let f = function () &#123;</span><br><span class="line">        console.log(a);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>这一篇文章是对上篇文章作用域，作用域链，执行上下文的补充，以及引入一个东西叫做闭包，这里的这些看似纠缠不清，只要理解了他们之间的关系，其实就透彻了。这里先抛出这几个东西到底是啥。</p>
+<p>这里引用一下《你不知道的JavaScript》(上卷)第一部分第一章中所说的内容，来解释什么是作用域。</p>
 <blockquote>
-<p>另外还有一个地方需要注意的是，es6的块级作用域允许声明函数的规则，只在使用大花括号的情况下才成立，如果没有就会报错。</p>
+<p>作用域是一套规则，用于确定在何处以及如何查找变量（标识符）。如果查找的目的是对变量进行赋值，那么就会使用 LHS 查询；如果目的是获取变量的值，就会使用 RHS 查询。更多请在本书中查看，如果需要可以联系我要电子版的书籍。</p>
 </blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">//不报错</span><br><span class="line">if (1) &#123;</span><br><span class="line">    function f() &#123; &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//报错</span><br><span class="line">if (12)</span><br><span class="line">    function f() &#123; &#125;</span><br></pre></td></tr></table></figure>
-<h4 id="补充do表达式"><a href="#补充do表达式" class="headerlink" title="补充do表达式"></a>补充do表达式</h4><p>本质上，块级作用域是一个语句，将多个操作封装在一起，没有返回值。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    let t = f();</span><br><span class="line">    t = t * y + 1</span><br><span class="line">&#125;</span><br><span class="line">//在这个代码中块级作用域将两个语句封装在一起。但是，在块级作用域以外，没有办法得到t的值，因为块级作用域不返回值，除非t是全局变量</span><br><span class="line">//现在有一个提案使得块级作用域可以变为表达式，也就是说可以返回值，就是加上do, 使之变为do表达式</span><br><span class="line">let x = do &#123;</span><br><span class="line">    let t = f();</span><br><span class="line">    t * t + 1</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="const"><a href="#const" class="headerlink" title="const"></a>const</h3><p>const跟let一样是es6中新的声明方法，很多的特性跟let是一样的。</p>
-<p>这里就说一个他的差别，就是const声明的变量的不可变性。</p>
-<p><code>const</code>实际上保证的，并不是变量的值不得改动，而是变量指向的那个内存地址不得改动。对于简单类型的数据（数值、字符串、布尔值），值就保存在变量指向的那个内存地址，因此等同于常量。</p>
-<p>但对于复合类型的数据（主要是对象和数组），变量指向的内存地址，保存的只是一个指针，<code>const</code>只能保证这个指针是固定的，至于它指向的数据结构是不是可变的，就完全不能控制了。因此，将一个对象声明为常量必须非常小心。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">const foo = &#123;&#125;;</span><br><span class="line"></span><br><span class="line">// 为 foo 添加一个属性，可以成功</span><br><span class="line">foo.prop = 123;</span><br><span class="line">foo.prop // 123</span><br><span class="line"></span><br><span class="line">// 将 foo 指向另一个对象，就会报错</span><br><span class="line">foo = &#123;&#125;; // TypeError: &quot;foo&quot; is read-only</span><br></pre></td></tr></table></figure>
-<p>在对象中添加属性，是在堆中该对象的数据里添加数据，而没有改变obj中存放的指向该对象的地址，所以是可以执行成功的，而对obj重新赋值的操作则改变了obj的指针指向，故而操作失败，抛出错误。</p>
-<p>对于基本类型也是同样，因为基本类型的数据直接就存放在栈中，常量名直接指向这个地址上的数据，一旦改变值，就会导致指针地址发生改变，所以造成了无法改变值的假象。</p>
+<p>我们可以把函数的范围叫做作用域，但是不精准，作用域确实是因为函数的产生而产生的，作用域属于一个函数，一个函数的定义产生了一个作用域，这两个是相互绑定的。那么它在哪里呢？我们怎么访问它？</p>
+<p>每一个对象都可以有属性和方法，而在javascript中一切又都是对象。所以我们的函数也是一个对象，根据古希腊哲学，三段论那么它就有属性和方法。在函数身上就有一个属性<code>[[scope]]</code>叫做域，这个属性里面存储的就是我们所说的作用域。但是这个属性我们是不能操作的。它仅供javascript引擎存取。</p>
+<p>[[scope]]指的就是我们说所的作用域，其中存储了<code>执行上下文</code>的集合。</p>
+<p>可能你又有疑问了，执行上下文的集合又是个啥？我们先了解一下执行上下文是啥。</p>
+<p>在函数执行时，会创建一个称为执行上下文的对象，一个执行上下文定义了一个<code>函数执行时的环境</code>。</p>
+<p>作用域链：上面说到[[scope]]中所存储的执行上下文的集合。这个集合呈链式链接，我们把这种链式链接叫做<code>作用域链</code></p>
+<p>我们先要理清楚这些原理，只需要掌握这篇知识，在开始之前我们要先从javascript编译原理开始详细的在上文所说的书籍中有详细的解释，我这里只是简单的介绍。</p>
+<h2 id="预编译"><a href="#预编译" class="headerlink" title="预编译"></a>预编译</h2><p>预编译，在js运行的时候有一个阶段叫做预编译，也就是上面的创建执行上下文的过程。</p>
+<p><strong>js运行三部曲</strong></p>
+<p>​        1.语法分析</p>
+<p>​        2.预编译</p>
+<p>​        3.解释执行</p>
+<p>语法分析：js引擎在解析js代码之前，会先通篇扫描一下，找出低级语法错误，比如括号写错。</p>
+<p>编译执行：js是一种解释性语言，编译一行执行一行，当语法分析没有问题，并且已经完成预编译阶段之后，就开始解释执行代码。</p>
+<p>首先我们要知道一个全局上下文的概念它被保存在全局作用域中。这个是一直存在而且只有一个，当你关闭浏览器是它才随之消失。</p>
+<h3 id="全局的预编译"><a href="#全局的预编译" class="headerlink" title="全局的预编译"></a>全局的预编译</h3><p>Global Object简称GO，它的步骤如下</p>
+<p> 第一步 : 创建一个GO对象(也就是我们所说的全局上下文). 注 : GO === window</p>
+<p>第二步 : 找变量声明, 如果有,就将该变量作为GO对象的属性, 并赋值为undefined.</p>
+<p> 第三步 : 找函数声明(注 : 一定要区别函数声明和函数表达式), 如果有, 就将该函数名作为GO对象的属性, 值为指向这个函数的一个地址。</p>
+<h3 id="函数的预编译"><a href="#函数的预编译" class="headerlink" title="函数的预编译"></a>函数的预编译</h3><p>发生时间 : 函数准备开始执行的前一刻, 即在函数开始执行时, 函数预编译就完成了。</p>
+<p> 第一步 : 创建一个AO（Activeaction Object）对象(函数自身的执行期上下文,)。</p>
+<blockquote>
+<p>这个对象里面有一些我们看不到的却存在的隐式属性，比如this：window属性，arguments:[]属性，这个对象用来存放一些属性和方法，这些属性和方法就按照前面的四步来产生。注意var a = function(){}是函数表达式，其中var a是一个变量声明。</p>
+</blockquote>
+<p>第二步 : 找形参和变量声明, 如果有, 就将形参和变量名作为AO对象的属性, 并赋值为undefined。</p>
+<p>第三步 : 将实参和形参的值相统一。</p>
+<p>第四步 : 在函数体里面找函数声明, 如果有, 就将函数名作为AO对象的属性, 值为指向这个函数的一个地址。</p>
+<p>方便理解我们这里用一个例子来代码体现：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">function test(a, b) &#123;</span><br><span class="line"></span><br><span class="line">    console.log(a);//function a()&#123;&#125;</span><br><span class="line">    function a() &#123; &#125;</span><br><span class="line">    a = 222;</span><br><span class="line">    </span><br><span class="line">    console.log(a);//222</span><br><span class="line">    function b() &#123; &#125;</span><br><span class="line">    </span><br><span class="line">    console.log(b);//function b()&#123;&#125;</span><br><span class="line">    var b = 111;</span><br><span class="line">    var a;</span><br><span class="line">&#125;</span><br><span class="line">test(1);</span><br><span class="line"></span><br><span class="line">/*</span><br><span class="line">GO&#123;</span><br><span class="line">    test:function test()&#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line">AO&#123;</span><br><span class="line">	a: undefined ==&gt;1==&gt;f a</span><br><span class="line">	b: undefined ==&gt; f b</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">*/</span><br></pre></td></tr></table></figure>
+<p>根据上面预编译的过程，我们来分析，一开始全局只有一个函数test在预编译过程中也就是在他执行之前，他只是定义状态。这时他被放在了全局GO里面。然后代码开始执行，test函数执行，在test函数执行前一刻他会生成自己的执行上下文AO，按照步骤他会寻找test函数的形参和变量声明，如果有就将它们作为属性名初始值为undefined然后再进行下一步，将形参和实参统一，所以这里a变量的值从undefined变为了1，然后第四部，找函数声明，这里找到了两个函数，a、b，所以我们现在AO里面的a、b属性的值分别变成了a、b函数。这一步完成后我们的AO对象就创建完成了，当然里面其实还有this,arguments这些，我们这里不讨论，这是代码开始真正执行，第一句语句就是一个输出语句，要输出a,首先它会在自己的AO里面寻找有没有，这里我们显然是有的，它是一个函数a，所以输出是a函数，代码接着运行，因为函数声明其实已经被提到了最上面定义了，所以这里紧接着就是一个赋值语句a=222,然后输出222，输出b,接着又是赋值语句b=111。整个函数的执行过程就是这样的，假如将代码稍稍修改一下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">var c = 5;</span><br><span class="line">function test(a, b) &#123;</span><br><span class="line">	console.log(c)</span><br><span class="line">&#125;</span><br><span class="line">test(1);</span><br><span class="line">/*</span><br><span class="line">预编译</span><br><span class="line">GO&#123;</span><br><span class="line">    c:undefined</span><br><span class="line">    test:function test()&#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line">AO&#123;</span><br><span class="line">    a:undefined==&gt;1</span><br><span class="line">    b:undefined</span><br><span class="line">&#125;</span><br><span class="line">*/</span><br></pre></td></tr></table></figure>
+<p>我们现在不输出a、b了，我们要输出一个c，显而易见我们知道这里肯定可以输出5，因为在以前我们的理解是这样的，要输出一个变量时，他会先在自己的作用域里面寻找，如果没有就会到它所在作用域的上一级去找有没有，就这样一层一层的寻找如果到了全局作用域都没有，就会抛出错误，ReferenceError，那么他是根据什么到上级去找的呢，当我们了解了执行上下文之后，我们知道，其实他是先在自己的AO对象里面寻找，如果没有就去GO里面找了，其实就是因为作用域链的原因才能沿着作用域链去到上一级中。所以我们就在说说这个过程是怎么样的。</p>
+<h2 id="作用域、作用域链精解"><a href="#作用域、作用域链精解" class="headerlink" title="作用域、作用域链精解"></a>作用域、作用域链精解</h2><p>在上面我们了解了执行上下文从创建过程，下面我们就将这3个的联系，弄清楚。</p>
+<p>函数的作用域[[scope]]里面存储的是执行上下文集合，作用域链就是因为这个集合呈链式链接的所以称为作用域链，也就是作用域里面放的就是我们所说的作用域链。下面用一个例子来说明：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">//外层是全局环境</span><br><span class="line">function a()&#123;</span><br><span class="line">    //...</span><br><span class="line">&#125;</span><br><span class="line">var glob = 100;</span><br><span class="line">a();</span><br></pre></td></tr></table></figure>
+<p>a函数定义时它就有了它的作用域[[scope]]里面存储的就是作用域链，不过由于现在还只是定义状态并没有执行里面只放了一个全局的执行上下文GO。这个作用域链里面就是放执行上下文的，所以说是个集合，虽然目前只有一个在里面放着。如下图所示：</p>
+<p><img src="https://raw.githubusercontent.com/Picsong/cloudimg/master/20190502160229.jpg" alt></p>
+<p>然后我们的代码紧接着开始执行。当a函数执行时会产生它自己的执行上下文AO，然后他会把自己的执行上下文放在第0位，全局的就变为了第1位去了，就像一个数组一样，每次产生的都会被放在自己作用域链的头部。</p>
+<p><img src="https://raw.githubusercontent.com/Picsong/cloudimg/master/20190502161305.jpg" alt></p>
+<p>正是因为形成了这样的结构，我们才能够沿着作用域链向上寻找，自己需要的东西。</p>
+<blockquote>
+<p>注意：因为执行上下文，在执行完后就会销毁，a函数又会回到一开始被定义的状态，等待下一次调用。每次调用都会产生一个独一无二的执行上下文。</p>
+</blockquote>
+<p>我们再将例子复杂一点</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">function a()&#123;</span><br><span class="line">    function b()&#123;</span><br><span class="line">        var b = 234</span><br><span class="line">    &#125;</span><br><span class="line">    var a = 123</span><br><span class="line">    b()</span><br><span class="line">&#125;</span><br><span class="line">var glob = 100</span><br><span class="line">a()</span><br></pre></td></tr></table></figure>
+<p>在这个例子中我们在a函数中又定义了一个b函数，前面的都是一样的过程，我们就来看看由于a的执行导致了b定义。b定义是啥样的？</p>
+<p><img src="https://raw.githubusercontent.com/Picsong/cloudimg/master/20190502163646.png" alt></p>
+<p>因为b是在a函数的作用域内出生的，所以他一出来就拿到了a的劳动成果，也就是a作用域链。就像是一出生就站在了巨人的肩膀上一样。这也是为什么我们说在内层作用域能够访问到外层作用域的变量的原因，因为内层作用域拿到了外层作用域存储的作用域链，当要查找一个变量的时候，就会先找自己的AO当自己没有，就继续沿着作用域链向上寻找。我们再来看看b执行时的状态。</p>
+<p><img src="https://raw.githubusercontent.com/Picsong/cloudimg/master/20190502164004.png" alt></p>
+<blockquote>
+<p>PS：这里的GO只有一个，a函数中的GO,与b函数中的GO都是一个。同样b函数定义时拿的AO和a函数的AO也是同一个，要验证也很简单，你可以试试在b函数中修改外部a变量。然后在a函数中输出看，有没有变化。</p>
+</blockquote>
+<p><strong>在上面我们说过函数一执行完就会销毁自己的执行上下文。对于上面的代码b函数执行完，其实也标志着a函数的执行结束。意思就是他们会根据顺序一一销毁掉自己的上下文。其实这个过程就是执行上下文的出入栈操作，关于更多执行上下文栈可以看看这篇文章-<a href="https://mp.weixin.qq.com/s/gn3DgB7OPl8Y_lYPykA4jA" target="_blank" rel="noopener">执行上下文栈</a>-,其实我们的作用域链就是一个栈结构，栈的特点就是先进后出，我们这里b执行完销毁，就是把上图的第0位的链接剪断了。b然后回到了最初的定义状态。等待下一次执行。然后a函数也执行完了，开始销毁自己的执行上下文，但是我们看到在a的AO里面存储了一个b的函数，但是我们a还是要销毁这个执行上下文，这个b也就永远没有了，它不用等待下一次执行了，a销毁了之后，这个b函数会被垃圾回收机制给清除了，然后a又回到了被定义的状态，等待下一次执行，当它执行时，它又会产生一个新的执行上下文,同时因为a的执行又会产生一个b的定义。这又是一个全新的b,这个过程周而复始。</strong></p>
+<p>了解了这个原理之后对我们编程有很大的帮助，而接下来一个概念理解起来也会很轻松。就是<code>闭包</code>我们就来说说闭包这个东西。</p>
+<h2 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h2><p>闭包是怎么产生的呢？其实在上面所说的一个过程中就可以产生闭包，上面我们说的函数执行完毕会销毁自己的执行上下文。那么我们要是不让他销毁呢，这样就可以产生闭包。一句话理解闭包就是：<strong>闭包就是能够读取其他函数内部变量的函数</strong>。</p>
+<p>我们前面提到过，不同作用域之间不能够互相访问，但是我们如果在一个函数内部再定义一个函数，并且这个内部函数与外部函数的变量有关联，那么我们就可以通过返回这个内部的函数，然后来访问外部函数里面的变量。</p>
+<p>所以，在本质上，闭包就是将函数内部和函数外部连接起来的一座桥梁。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">var add;</span><br><span class="line">function a()&#123;</span><br><span class="line">    var demo1 = 123;</span><br><span class="line">    add = function()&#123;</span><br><span class="line">        demo1++;</span><br><span class="line">    &#125;</span><br><span class="line">    return function()&#123;</span><br><span class="line">        console.log(demo1)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">var demo = a();</span><br><span class="line">demo();</span><br><span class="line">add();</span><br><span class="line">demo();</span><br></pre></td></tr></table></figure>
+<p>当函数执行完之后，函数的执行上下文就会被销毁，自然我们就无法访问里面的变量了，但是我们这个函数返回了<strong>一个依赖于这个函数的新函数，也就是说这个没有被销毁的新函数的作用域链中还存在着对原本函数的作用域的引用</strong>，就导致我们原本的函数的上下文不会被销毁，我们<strong>称返回的这个新函数是原本函数的闭包函数。</strong></p>
+<p>在上面的例子中，a函数内部有一个全局的函数add和一个局部变量demo1，我们这个把返回函数给了一个全局变量demo进入到了内存中，但是由于这个返回的新函数依赖于本来的a函数，这就导致本来的a函数的上下文不会被销毁。</p>
+<p>这里我们的打印函数一共运行了两次，都能打印出来值，说明a函数的demo1变量在函数执行完之后并没有被销毁而是存到了内存中。</p>
+<p>其次，add的值是一个匿名函数，而这个匿名函数本身也是一个闭包，所以add相当于是一个setter叠加器，可以在函数外部对函数内部的局部变量进行操作。</p>
+<p>我们还是结合图&amp;代码来说明：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">function a()&#123;</span><br><span class="line">    function b()&#123;</span><br><span class="line">        var b = 234</span><br><span class="line">        console.log(a)</span><br><span class="line">    &#125;</span><br><span class="line">    var a = 123</span><br><span class="line">    return b</span><br><span class="line">&#125;</span><br><span class="line">var glob = 100</span><br><span class="line">var demo = a()</span><br><span class="line">demo()</span><br></pre></td></tr></table></figure>
+<p>这个例子就是一个的闭包b函数被保存到了外部，那么他是怎么做到没有让a的执行上下文没有被销毁的呢？</p>
+<p><img src="https://raw.githubusercontent.com/Picsong/cloudimg/master/20190502200157.jpg" alt></p>
+<p>首先b函数是因为a函数执行才被定义出来的，所以b函数定义和a函数执行所产生的作用域链是一样的，所以在图上我们就放在了一起。然后a函数执行完后开始销毁自己的执行上下文，相当于就是把上图a函数指向它的AO的线给切断了，但是我们的b函数里面却保留了对a函数的AO的引用，而且被保存到了外面，a函数的执行上下文，并没有得到释放，b函数依然能够访问它，这里就是形成了闭包。</p>
+<p><strong>使用闭包的注意点：</strong></p>
+<p>1.由于闭包会使得函数中的变量都被保存在内存中，内存消耗很大，所以不能滥用闭包，否则会造成网页的性能问题，在IE中可能导致内存泄露。</p>
+<p>解决方法是，在退出函数之前，将不使用的局部变量全部删除。</p>
+<p>2.闭包会在父函数外部，改变父函数内部变量的值。所以，如果你把父函数当作对象使用，把闭包当作它的公用方法，把内部变量当作它的私有属性，这时一定要小心，<strong>不要随便改变父函数内部变量的值</strong>。</p>
+<p><strong>总结：</strong></p>
+<p>当内部函数在定义它的作用域的外部被引用时,就创建了该内部函数的闭包 ,如果内部函数引用了位于外部函数的变量,当外部函数调用完毕后,这些变量在内存不会被释放,因为闭包需要它们。</p>
+<p>最后做一道闭包的题。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">function fun(n, o) &#123;</span><br><span class="line">    console.log(o);</span><br><span class="line">    return &#123;</span><br><span class="line">        fun: function (m) &#123;</span><br><span class="line">            return fun(m, n)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">let a = fun(0);//输出undefined ，a现在&#123;fun()&#123;</span><br><span class="line">// return fun(m,n)</span><br><span class="line">// &#125;&#125;</span><br><span class="line">a.fun(1);//1，0 //输出0</span><br><span class="line">a.fun(2); //0</span><br><span class="line">a.fun(3);//0</span><br><span class="line"></span><br><span class="line">//n=0,fun(0)执行后返回&#123;fun(m)&#123;return fun(m,n)&#125;&#125;,然后m=1,n=0,执行fun(1，0);n=1,o=0,fun(2,1)执行;n=2,o=1;</span><br><span class="line">let b = fun(0).fun(1).fun(2).fun(3);//undefined,0,1,2</span><br><span class="line"></span><br><span class="line">//n=1</span><br><span class="line">let c = fun(0).fun(1); c.fun(2); c.fun(3);//undefined,0,1,1</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -538,12 +553,12 @@
   <script type="text/javascript" src="http://jslibs.wuxubj.cn/sweetalert_mini/jquery-1.7.1.min.js"></script>
   <script src="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.min.js"></script>
   <link rel="stylesheet" type="text/css" href="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.mini.css">
-  <p><span>本文标题:</span><a href="/2019/04/07/手摸手带你学JS第二篇/">手摸手带你学JS第二篇</a></p>
+  <p><span>本文标题:</span><a href="/2019/04/09/手摸手带你学JS第四篇/">手摸手带你学JS第四篇</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 彭松 的个人博客">彭松</a></p>
-  <p><span>发布时间:</span>2019年04月07日 - 08:04</p>
-  <p><span>最后更新:</span>2019年04月29日 - 22:04</p>
-  <p><span>原始链接:</span><a href="/2019/04/07/手摸手带你学JS第二篇/" title="手摸手带你学JS第二篇">https://picsong.top/2019/04/07/手摸手带你学JS第二篇/</a>
-    <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://picsong.top/2019/04/07/手摸手带你学JS第二篇/" aria-label="复制成功！"></i></span>
+  <p><span>发布时间:</span>2019年04月09日 - 16:04</p>
+  <p><span>最后更新:</span>2019年05月02日 - 21:05</p>
+  <p><span>原始链接:</span><a href="/2019/04/09/手摸手带你学JS第四篇/" title="手摸手带你学JS第四篇">https://picsong.top/2019/04/09/手摸手带你学JS第四篇/</a>
+    <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://picsong.top/2019/04/09/手摸手带你学JS第四篇/" aria-label="复制成功！"></i></span>
   </p>
   <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
 </div>
@@ -607,7 +622,9 @@
           
             <a href="/tags/JS基础/" rel="tag"><i class="fa fa-tag"></i> JS基础</a>
           
-            <a href="/tags/变量声明/" rel="tag"><i class="fa fa-tag"></i> 变量声明</a>
+            <a href="/tags/执行上下文/" rel="tag"><i class="fa fa-tag"></i> 执行上下文</a>
+          
+            <a href="/tags/闭包/" rel="tag"><i class="fa fa-tag"></i> 闭包</a>
           
         </div>
       
@@ -620,8 +637,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/04/07/深入vue响应式原理/" rel="next" title="深入vue响应式原理">
-                <i class="fa fa-chevron-left"></i> 深入vue响应式原理
+              <a href="/2019/04/08/vuex基础入门/" rel="next" title="Vuex基础入门">
+                <i class="fa fa-chevron-left"></i> Vuex基础入门
               </a>
             
           </div>
@@ -629,10 +646,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/04/08/手摸手带你学JS第三篇/" rel="prev" title="手摸手带你学JS第三篇">
-                手摸手带你学JS第三篇 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -811,7 +824,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#var、let-及-const-区别"><span class="nav-number">1.</span> <span class="nav-text">var、let 及 const 区别</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#var"><span class="nav-number">1.1.</span> <span class="nav-text">var</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#let"><span class="nav-number">1.2.</span> <span class="nav-text">let</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#不存在变量提升"><span class="nav-number">1.2.1.</span> <span class="nav-text">不存在变量提升</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#不允许重复声明"><span class="nav-number">1.2.2.</span> <span class="nav-text">不允许重复声明</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#暂定性死区"><span class="nav-number">1.2.3.</span> <span class="nav-text">暂定性死区</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#therefore"><span class="nav-number">1.2.4.</span> <span class="nav-text">therefore</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#块级作用域"><span class="nav-number">1.2.5.</span> <span class="nav-text">块级作用域</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#补充do表达式"><span class="nav-number">1.2.6.</span> <span class="nav-text">补充do表达式</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#const"><span class="nav-number">1.3.</span> <span class="nav-text">const</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#预编译"><span class="nav-number">2.</span> <span class="nav-text">预编译</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#全局的预编译"><span class="nav-number">2.1.</span> <span class="nav-text">全局的预编译</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#函数的预编译"><span class="nav-number">2.2.</span> <span class="nav-text">函数的预编译</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#作用域、作用域链精解"><span class="nav-number">3.</span> <span class="nav-text">作用域、作用域链精解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#闭包"><span class="nav-number">4.</span> <span class="nav-text">闭包</span></a></li></ol></div>
             
 
           </div>
