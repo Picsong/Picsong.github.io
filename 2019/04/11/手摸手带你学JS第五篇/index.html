@@ -1,0 +1,1583 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+  <link rel="manifest" href="/images/manifest.json">
+
+
+  <meta name="msapplication-config" content="/images/browserconfig.xml">
+
+
+
+  <meta name="keywords" content="手摸手,JS基础,原型,继承,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="彭松的博客" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="这是手摸手系列的第五篇文章，这篇文章的大致内容，原型，原型链，继承的知识。我会从js基础、js高级、js-web、js-dom、其中会有许多基础知识理论，以及小练习。还会开个js-game板块，会有一些好玩的游戏。当然此系列也涉及到前端框架的知识。以及实战项目。学习完这个系列保证你会收获很多。更多请关注Github">
+<meta name="keywords" content="手摸手,JS基础,原型,继承">
+<meta property="og:type" content="article">
+<meta property="og:title" content="手摸手带你学JS第五篇">
+<meta property="og:url" content="https://picsong.top/2019/04/11/手摸手带你学JS第五篇/index.html">
+<meta property="og:site_name" content="彭松的博客">
+<meta property="og:description" content="这是手摸手系列的第五篇文章，这篇文章的大致内容，原型，原型链，继承的知识。我会从js基础、js高级、js-web、js-dom、其中会有许多基础知识理论，以及小练习。还会开个js-game板块，会有一些好玩的游戏。当然此系列也涉及到前端框架的知识。以及实战项目。学习完这个系列保证你会收获很多。更多请关注Github">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://raw.githubusercontent.com/Picsong/cloudimg/master/16778935-682d4f52285fd2be.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/Picsong/cloudimg/master/20190503014545.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Picsong/cloudimg/master/20190503104853.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Picsong/cloudimg/master/20190503105838.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Picsong/cloudimg/master/20190503111334.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Picsong/cloudimg/master/20190503150428.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Picsong/cloudimg/master/20190503150645.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Picsong/cloudimg/master/20190503152405.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/Picsong/cloudimg/master/20190503153554.png">
+<meta property="og:updated_time" content="2019-05-03T07:40:12.208Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="手摸手带你学JS第五篇">
+<meta name="twitter:description" content="这是手摸手系列的第五篇文章，这篇文章的大致内容，原型，原型链，继承的知识。我会从js基础、js高级、js-web、js-dom、其中会有许多基础知识理论，以及小练习。还会开个js-game板块，会有一些好玩的游戏。当然此系列也涉及到前端框架的知识。以及实战项目。学习完这个系列保证你会收获很多。更多请关注Github">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/Picsong/cloudimg/master/16778935-682d4f52285fd2be.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://picsong.top/2019/04/11/手摸手带你学JS第五篇/">
+
+
+
+
+
+  <title>手摸手带你学JS第五篇 | 彭松的博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+	<a href="https://github.com/Picsong" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewbox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; left: 0; transform: scale(-1, 1);" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style></a>
+	<header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">彭松的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://picsong.top/2019/04/11/手摸手带你学JS第五篇/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="彭松">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/touxiang.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="彭松的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">手摸手带你学JS第五篇</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-11T21:52:52+08:00">
+                2019-04-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/手摸手/" itemprop="url" rel="index">
+                    <span itemprop="name">手摸手</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2019/04/11/手摸手带你学JS第五篇/" class="leancloud_visitors" data-flag-title="手摸手带你学JS第五篇">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  5.2k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  20
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><img src="https://raw.githubusercontent.com/Picsong/cloudimg/master/16778935-682d4f52285fd2be.jpg" alt></p>
+<p>这是手摸手系列的第五篇文章，这篇文章的大致内容，原型，原型链，继承的知识。我会从js基础、js高级、js-web、js-dom、其中会有许多基础知识理论，以及小练习。还会开个js-game板块，会有一些好玩的游戏。当然此系列也涉及到前端框架的知识。以及实战项目。学习完这个系列保证你会收获很多。<a href="https://github.com/Picsong" target="_blank" rel="noopener">更多请关注Github</a></p>
+<a id="more"></a>
+<h2 id="原型"><a href="#原型" class="headerlink" title="原型"></a>原型</h2><p><strong>原型的定义</strong>：原型是function对象的一个属性，它定义了构造函数制造出来的对象的公共祖先。通过该构造函数产生的对象，可以继承该原型的属性和方法。<strong>原型也是对象</strong>。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">function Person()&#123;&#125;</span><br></pre></td></tr></table></figure>
+<p>我们先定义一个构造函数，Person.prototype这个属性就是这个构造函数的原型，这个属性是天生就有的，并且这个属性的值也是一个对象。</p>
+<p>每一个函数身上都有一个prototype属性，叫做原型。我们可以在原型prototype上添加属性和方法，每一个构造出来的对象都可以继承这些属性和方法。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Person.prototype.name = <span class="string">'song'</span>;</span><br><span class="line">Person.prototype.age = <span class="number">21</span>;</span><br><span class="line">Person.prototype.money = <span class="number">200</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> person = <span class="keyword">new</span> Person();</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.dir(person.name);<span class="comment">//song</span></span><br><span class="line"><span class="built_in">console</span>.log(person.age);<span class="comment">//21</span></span><br></pre></td></tr></table></figure>
+<p>虽然每一个对象都是独立的，但是他们都有共同的祖先，当我们访问这个对象的属性的时候，如果它没有这个属性，就会向上找到它的原型，然后在原型上访问这个属性。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.money = <span class="number">100</span>;</span><br><span class="line">&#125;</span><br><span class="line">Person.prototype = &#123;</span><br><span class="line">    money:<span class="number">200</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> p1 = <span class="keyword">new</span> Person()</span><br><span class="line"><span class="built_in">console</span>.log(p1.money)<span class="comment">//100</span></span><br><span class="line"><span class="keyword">delete</span> p1.money;</span><br><span class="line"><span class="built_in">console</span>.log(p1.money)<span class="comment">//200</span></span><br></pre></td></tr></table></figure>
+<p>这里我们p1对象因为自身有一个money属性，所以就不会到原型上去寻找money属性，而是查询自身的money属性，因此打印的是100，但是当我们删除了自身的money属性之后，它就会到原型上去寻找money这个属性，因此就打印200。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">p1.money = 1000;</span><br><span class="line">console.log(p1.money)//100</span><br></pre></td></tr></table></figure>
+<p>当我们再次给对象添加属性之后，打印money属性就是自身的属性。</p>
+<p><strong>利用原型特点和概念，可以提取公有属性</strong>。</p>
+<p>我们可以把每一个对象都有的公有属性不写在构造函数里面，而是提取到原型上，这样当我们用构造函数构造大量的对象的时候就不需要走多次构造函数里面的赋值语句了，而只需要走一遍，每一个对象调用属性的时候直接上原型上查找就可以了。</p>
+<p><strong>对象如何查看原型</strong></p>
+<p>我们前面提到过用构造函数构造对象的时候，会隐式创建一个this对象，这个this对象里面有一个默认的属性叫做<strong>proto属性</strong>，这个属性的值就是指向的这个对象的原型。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var this = &#123;</span><br><span class="line">    //...</span><br><span class="line">    __proto__: Person.prototype;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>当查找的属性是自身没有的属性的时候，就会先查找<code>__proto__</code>这个属性，然后这个属性指向了原型，所以就到原型上面继续查找属性了</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Person.prototype.money = 100</span><br><span class="line">console.log(p1.__proto__.money)//100</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>注意：<code>prototype</code>是函数的属性，<code>__proto__</code>是对象的属性。</p>
+</blockquote>
+<p><strong>对象如何查看构造自身的构造函数</strong></p>
+<p>在prototype里面，有一个隐式的属性叫做<strong>constructor</strong>，这个属性记录的就是<strong>对象的构造器</strong>，里面存的就是构造函数。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">console.log(p1.constructor)//function Person()&#123;&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="原型链"><a href="#原型链" class="headerlink" title="原型链"></a>原型链</h2><p>有了原型，原型还是一个对象，那么这个名为原型的对象自然还有自己的原型，这样的原型上还有原型的结构就构成了原型链。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">Gra.prototype.firstName = <span class="string">'peng'</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Gra</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = <span class="string">'grandfather'</span>;</span><br><span class="line">    <span class="keyword">this</span>.sex = <span class="string">'male'</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> grandfoo = <span class="keyword">new</span> Gra();</span><br><span class="line"></span><br><span class="line">grandfoo.word = <span class="string">'hello'</span>;</span><br><span class="line">Foo.prototype = grandfoo;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.age = <span class="number">18</span>;</span><br><span class="line">    <span class="keyword">this</span>.money = <span class="number">1000</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> father = <span class="keyword">new</span> Foo();</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Son</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = <span class="string">'song'</span>;</span><br><span class="line">&#125;</span><br><span class="line">Son.prototype = father;</span><br><span class="line"><span class="keyword">var</span> son = <span class="keyword">new</span> Son();</span><br></pre></td></tr></table></figure>
+<p>Foo创造出来的每一个对象都继承自grandfoo这个对象，son的每一个对象都继承自father这个由Foo创造出来的对象，这样son就可以继承上面Foo和Gra的所有属性。</p>
+<p>当我们查找son上的属性的时候，如果son自身有属性，那么就打印出来，如果没有，就向上查找原型father，如果father上面还有这个属性，那么继续向上查找grandfoo，如果有就输出，如果没有就返回undefined。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">console.log(son.name);//song</span><br><span class="line">console.log(son.money);//1000</span><br><span class="line">console.log(son.age);//18</span><br><span class="line">console.log(son.sex);//male</span><br><span class="line">console.log(son.firstName);//peng</span><br><span class="line">console.log(son.word);//hello</span><br></pre></td></tr></table></figure>
+<p>这种链式的查询结构就叫做原型链</p>
+<p>那么原型链有没有终点？我们写的Gra是不是这个原型链的终点？</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">console.log(Gar.prototype)//&#123;name:&quot;peng&quot;&#125;</span><br><span class="line">console.log(Gar.prototype.__proto__)//Object对象</span><br><span class="line">console.log(Gar.prototype.__proto__.__proto__)//null</span><br></pre></td></tr></table></figure>
+<p>测试可以看出，其实我们的Gra.prototype上面还有原型，这个原型是一个空对象，这个空对象上面就没有了。</p>
+<p>其实，绝大部分的对象最终都会继承自<strong>Object.prototype</strong>这个对象。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var obj = &#123;&#125;</span><br><span class="line">var obj1 = new Object()</span><br><span class="line">obj.__proto__===Object.prototype //true</span><br><span class="line">obj1.__proto__===Object.prototype //true</span><br></pre></td></tr></table></figure>
+<p>其实，绝大部分的对象最终都会继承自<strong>Object.prototype</strong>这个对象。</p>
+<p>由此可见，原型链的终点一般是Object.prototype</p>
+<p>但是<strong>并不是所有的对象都有原型</strong>。</p>
+<p>创建对象不只有，字面量式和构造函数式，还有第三种方法，<strong>Object.create</strong></p>
+<p>Object.create()方法需要写一个参数，这个参数就是我们这个对象的原型。如果我们想要构造和var obj = {};一样的空对象，那么就需要写：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var obj = Object.create(Object.prototype)</span><br></pre></td></tr></table></figure>
+<p>当然，我们也可以写一个自定义的属性，让它成为原型</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var obj = Object.create(&#123;name:&apos;pengsong&apos;&#125;)</span><br><span class="line">console.log(obj.name);//pengsong</span><br></pre></td></tr></table></figure>
+<p>但是，当我们<strong>写参数为null</strong>的时候，我们就构造出来了一个<strong>没有原型</strong>的对象。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var obj = Object.create(null)</span><br><span class="line">console.log(obj.__proto__) //undefined</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>undefined null也都没有原型。它们之所以能打印出来，是因为不调用任何方法的，直接打印出来。</p>
+</blockquote>
+<p><strong>原型链上属性的增删改查</strong></p>
+<p>其实我们前面一直在使用着这些方法，这里说一下原型上的引用值。当我们通过一个对象改变了原型上的<strong>引用值类型</strong>的属性的话，那么所有对象的这个属性的值都会随之更改。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Person.prototype.arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br><span class="line"><span class="keyword">let</span> p1 = <span class="keyword">new</span> Person()</span><br><span class="line"><span class="keyword">let</span> p2 = <span class="keyword">new</span> Person()</span><br><span class="line">p1.arr.push(<span class="number">4</span>)</span><br><span class="line"><span class="built_in">console</span>.log(p2.arr) <span class="comment">//1 2 3 4</span></span><br></pre></td></tr></table></figure>
+<p>删除</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Person.prototype.name = <span class="string">"fatcher"</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = <span class="string">"son"</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> p1 = <span class="keyword">new</span> Person()</span><br><span class="line"><span class="keyword">delete</span> p1.name</span><br><span class="line"><span class="built_in">console</span>.log(p1.name) <span class="comment">//fatcher</span></span><br></pre></td></tr></table></figure>
+<p>这个时候p1对象上面没有了name属性，那么依据我们前面说的当自身没有这个属性的时候就会向原型查询这个属性的说法，我们再次删除这个属性是不是就可以删除原型上的属性了？</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">delete p1.name</span><br><span class="line">console.log(p1.name) //fatcher</span><br></pre></td></tr></table></figure>
+<p>然而事实并没有，由此可见，<strong>对象并不能删除原型上的属性</strong>。</p>
+<p>修改</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Person.prototype.name = <span class="string">"fatcher"</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> p1 = <span class="keyword">new</span> Person()</span><br><span class="line"><span class="built_in">console</span>.log(p1.name)<span class="comment">//fatcher</span></span><br><span class="line">p1.name = <span class="string">'mother'</span></span><br><span class="line"><span class="built_in">console</span>.log(p1.name)<span class="comment">//mother</span></span><br></pre></td></tr></table></figure>
+<p>看起来输出了我们修改后的，但是事实真的如此吗？</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">delete p1.name</span><br><span class="line">console.log(p1.name)//fatcher</span><br></pre></td></tr></table></figure>
+<p>所以上面的代码并没有修改到原型链上的属性，只是因为自身没有这个属性，而添加了一个到自己身上。</p>
+<h2 id="原型链总结"><a href="#原型链总结" class="headerlink" title="原型链总结"></a>原型链总结</h2><p><strong><code>prototype</code>：每一个函数天生自带一个属性（prototype）,prototype属性的值为一个对象，里面默认结构如下：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">prototype:&#123;</span><br><span class="line">    constructor: 该函数本身，</span><br><span class="line">    __proto__: 指向的是构造这个对象的函数的prototype</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong><code>__proto__</code>:  除了特殊情况的，每一个对象天生自带一个属性（<code>__proto__</code>）,指向的是构造这个对象的构造函数的prototype</strong></p>
+<blockquote>
+<p>因为所有的函数都是内置类Function的实例对象, 换句话说函数也是对象, 所以函数对象里面也有<code>__proto__</code>属性</p>
+</blockquote>
+<blockquote>
+<p>所谓的原型链就是顺着隐式原型(<code>__proto__</code>)一步一步往上找的.</p>
+</blockquote>
+<p>一图胜过万千语：</p>
+<p><img src="https://raw.githubusercontent.com/Picsong/cloudimg/master/20190503014545.png" alt></p>
+<blockquote>
+<p>ps：上图左侧的person构造函数还可以延伸出他的原型链，下面我们会说到。</p>
+</blockquote>
+<p>下面我们写一个例子，帮助理解看如下实例：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 1. 给内置类构造函数的原型上绑定一个自定义属性 : </span></span><br><span class="line"><span class="built_in">Function</span>.prototype.wife = <span class="string">"小仙女"</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 2. 创建一个构造函数用来生产实例</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">People</span>(<span class="params">name, age</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = name;</span><br><span class="line">    <span class="keyword">this</span>.age = age;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(People.prototype.__proto__ === <span class="built_in">Object</span>.prototype);     <span class="comment">// 返回值 : true</span></span><br><span class="line"><span class="built_in">console</span>.log(People.__proto__ === <span class="built_in">Function</span>.prototype);             <span class="comment">// 返回值 : true</span></span><br><span class="line"><span class="built_in">console</span>.log(People.wife);                                         <span class="comment">// 返回值 : 小仙女</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 3. 实例化一个对象</span></span><br><span class="line"><span class="keyword">let</span> p1 = <span class="keyword">new</span> People(<span class="string">"Picsong"</span>, <span class="number">22</span>);</span><br><span class="line"><span class="built_in">console</span>.log(p1);                       <span class="comment">// 返回值 : &#123;name: "Picsong", age: 22&#125;</span></span><br><span class="line"><span class="built_in">console</span>.log(p1.wife);                  <span class="comment">// 返回值 : undefined</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">分析过程如下:</span><br><span class="line"></span><br><span class="line"><span class="number">1.</span> 此时p1对象结构如下:</span><br><span class="line"></span><br><span class="line">p1 = &#123;</span><br><span class="line">    name: <span class="string">"Picsong"</span>,</span><br><span class="line">    age: <span class="number">22</span>,</span><br><span class="line">    __proto__(隐式原型): People.prototype  (所属类的prototype, 而p1就是有People实例化生成的)</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="number">2.</span> 此时People函数对象的结构如下:</span><br><span class="line"></span><br><span class="line">People = &#123;</span><br><span class="line">    prototype: &#123;</span><br><span class="line">        <span class="keyword">constructor</span>: function People() &#123; &#125;,</span><br><span class="line">        __proto__: <span class="built_in">Object</span>.prototype(proto属性此时所在的prototype是一个对象, 而且该对象是<span class="built_in">Object</span>的一个实例对象)</span><br><span class="line">    &#125;,</span><br><span class="line">    proto: <span class="built_in">Function</span>.prototype</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="number">3.</span> 在访问p1.wife时, 现在p1自身里面查找(没有), 就会顺着p1.proto属性往上找, 而People.prototype里面也没有则继续沿着People.prototype.proto往上找, <span class="built_in">Object</span>.prototype里面也没有, 而对象里面访问一个未定义的属性时, 返回的值为<span class="literal">undefined</span>.</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>友情链接：<a href="https://juejin.im/post/5cc7acd75188252dd765ed6a?utm_source=oschina-app" target="_blank" rel="noopener">javascript中的原型链</a></p>
+<p><a href="https://baijiahao.baidu.com/s?id=1593727246682033996&amp;wfr=spider&amp;for=pc" target="_blank" rel="noopener">一道题彻底弄懂js继承</a></p>
+<p><a href="https://blog.csdn.net/qq_35732147/article/details/82801533#%E4%B8%80%E3%80%81%E4%BD%BF%E7%94%A8%E5%8E%9F%E5%9E%8B%E9%93%BE%E7%BB%A7%E6%89%BF" target="_blank" rel="noopener">javascript中的继承</a></p>
+</blockquote>
+<h2 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h2><p>了解了上面的知识之后，其实原型，构造函数最重要的运用就是来实现继承。</p>
+<p>面向对象编程很重要的一个方面，就是对象的继承。<strong>A 对象通过继承 B 对象，就能直接拥有 B 对象的所有属性和方法</strong>。这对于代码的复用是非常有用的。</p>
+<p>大部分面向对象的编程语言，都是通过“类”（class）实现对象的继承。传统上，JavaScript 语言的继承不通过 class(ES6 引入了class 语法)，而是通过“原型对象”（prototype）实现。这里我们就来看看常见继承的6种方式。</p>
+<h2 id="原型链继承"><a href="#原型链继承" class="headerlink" title="原型链继承"></a>原型链继承</h2><p>将父类型的实例作为子类型的原型对象，以此构成的链式关系叫做<strong>原型链</strong>。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//父类型</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name,age</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = name</span><br><span class="line">    <span class="keyword">this</span>.age = age</span><br><span class="line">    <span class="keyword">this</span>.arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br><span class="line">    <span class="keyword">this</span>.setName = <span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line">Person.prototype.getName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;</span><br><span class="line"><span class="comment">//子类型</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Student</span>(<span class="params">money</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.money = money</span><br><span class="line">&#125;</span><br><span class="line">Student.prototype = <span class="keyword">new</span> Person()<span class="comment">//就是在这里将子类型的原型变为了父类型的一个实例，作为原型</span></span><br><span class="line"><span class="keyword">let</span> s1 = <span class="keyword">new</span> Student(<span class="number">100</span>)</span><br><span class="line"><span class="keyword">let</span> s2 = <span class="keyword">new</span> Student(<span class="number">200</span>)</span><br><span class="line"><span class="built_in">console</span>.log(s1,s2)<span class="comment">//输出如下</span></span><br></pre></td></tr></table></figure>
+<p><img src="https://raw.githubusercontent.com/Picsong/cloudimg/master/20190503104853.png" alt></p>
+<p>原型链式继承的本质是<strong>重写子类型的原型对象，代之以一个父类型的实例</strong>。</p>
+<p>所以<strong>子类的实例就可以通过proto__访问到 Student.prototype 也就是Person的实例，这样就可以访问到父类的私有方法，然后再通过__proto指向父类的prototype就可以获得到父类原型上的方法</strong>。于是做到了将父类的私有、公有方法和属性都当做子类的公有属性</p>
+<blockquote>
+<p><strong>子类继承父类的属性和方法是将父类的私有属性和公有方法都作为自己的公有属性和方法</strong>，</p>
+</blockquote>
+<p>我们都知道在操作基本数据类型的时候操作的是值，在操作引用数据类型的时候操作的是地址，如果说父类的私有属性中有引用类型的属性，那它被子类继承的时候会作为公有属性，这样子类1操作这个属性的时候，就会影响到子类2。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">s1.arr.push(<span class="number">4</span>)</span><br><span class="line"><span class="built_in">console</span>.log(s1.arr,s2.arr)</span><br><span class="line"><span class="built_in">console</span>.log(s1.__proto__ === s2.__proto__)<span class="comment">//true</span></span><br><span class="line"><span class="built_in">console</span>.log(s1.__proto__.__proto__ === s2.__proto__.__proto__)<span class="comment">//true</span></span><br></pre></td></tr></table></figure>
+<p><img src="https://raw.githubusercontent.com/Picsong/cloudimg/master/20190503105838.png" alt></p>
+<p>s1中arr属性发生变化，与此同时，s2中arr属性也会跟着变化。</p>
+<blockquote>
+<p>还有一点：<strong>我们需要在子类中添加新的方法或者是重写父类的方法时候，切记一定要放到替换原型的语句之后</strong></p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span> (<span class="params">name, age</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.name = name,</span><br><span class="line">  <span class="keyword">this</span>.age = age</span><br><span class="line">&#125;</span><br><span class="line">Person.prototype.setAge = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">"111"</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Student</span> (<span class="params">price</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.price = price</span><br><span class="line">  <span class="keyword">this</span>.setScore = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123; &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// Student.prototype.sayHello = function () &#123; &#125;//在这里写子类的原型方法和属性是无效的，</span></span><br><span class="line"><span class="comment">//因为会改变原型的指向，所以应该放到重新指定之后</span></span><br><span class="line">Student.prototype = <span class="keyword">new</span> Person()</span><br><span class="line">Student.prototype.sayHello = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123; &#125;</span><br><span class="line"><span class="keyword">var</span> s1 = <span class="keyword">new</span> Student(<span class="number">15000</span>)</span><br><span class="line"><span class="built_in">console</span>.log(s1)</span><br></pre></td></tr></table></figure>
+<p><strong>特点</strong></p>
+<ul>
+<li>父类新增原型方法/原型属性，子类都能访问到</li>
+<li>简单，易于实现</li>
+</ul>
+<p><strong>缺点</strong></p>
+<ul>
+<li>无法实现多继承</li>
+<li>来自原型对象的所有属性被所有实例共享</li>
+<li>创建子类实例时，无法向父类构造函数传参</li>
+<li>要想为子类新增属性和方法，必须要在<code>Student.prototype = new Person()</code> 之后执行，不能放到构造器中</li>
+</ul>
+<h2 id="经典继承"><a href="#经典继承" class="headerlink" title="经典继承"></a>经典继承</h2><p> <strong>经典继承</strong>也叫<strong>借用构造函数</strong>或<strong>伪造对象</strong>。</p>
+<p>由于函数只是在特定环境中执行代码的对象，所以可以通过使用apply()和call()方法改变父类型的构造函数的执行环境，从而达到继承的目的。</p>
+<blockquote>
+<p>这种方式关键在于:<strong>在子类型构造函数中通用call()调用父类型构造函数</strong></p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name, age</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.name = name,</span><br><span class="line">  <span class="keyword">this</span>.age = age,</span><br><span class="line">  <span class="keyword">this</span>.setName = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line">Person.prototype.setAge = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Student</span>(<span class="params">name, age, price</span>) </span>&#123;</span><br><span class="line">  Person.call(<span class="keyword">this</span>, name, age)  <span class="comment">// 相当于: this.Person(name, age)</span></span><br><span class="line">  <span class="comment">/*this.name = name</span></span><br><span class="line"><span class="comment">  this.age = age*/</span></span><br><span class="line">  <span class="keyword">this</span>.price = price</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> s1 = <span class="keyword">new</span> Student(<span class="string">'Tom'</span>, <span class="number">20</span>, <span class="number">15000</span>)</span><br></pre></td></tr></table></figure>
+<p><img src="https://raw.githubusercontent.com/Picsong/cloudimg/master/20190503111334.png" alt></p>
+<p><strong>这种方式只是实现部分的继承，如果父类的原型还有方法和属性，子类是拿不到这些方法和属性的。</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(s1.setAge())<span class="comment">//Uncaught TypeError: s1.setAge is not a function</span></span><br></pre></td></tr></table></figure>
+<p><strong>特点</strong></p>
+<ul>
+<li>解决了原型链继承中子类实例共享父类引用属性的问题</li>
+<li>创建子类实例时，可以向父类传递参数</li>
+<li>可以实现多继承(call多个父类对象)</li>
+</ul>
+<p><strong>缺点</strong></p>
+<ul>
+<li>实例并不是父类的实例，只是子类的实例</li>
+<li>只能继承父类的实例属性和方法，不能继承原型属性和方法</li>
+<li>无法实现函数复用，每个子类都有父类实例函数的副本，影响性能</li>
+</ul>
+<h2 id="组合继承"><a href="#组合继承" class="headerlink" title="组合继承"></a>组合继承</h2><p> 组合继承指的是将原型链和经典继承的技术组合到一起，从而发挥二者之长的一种继承模式。</p>
+<p>这种方式关键在于:<strong>通过调用父类构造，继承父类的属性并保留传参的优点，然后通过将父类实例作为子类原型，实现函数复用。</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span> (<span class="params">name, age</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.name = name,</span><br><span class="line">  <span class="keyword">this</span>.age = age,</span><br><span class="line">  <span class="keyword">this</span>.setAge = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123; &#125;</span><br><span class="line">&#125;</span><br><span class="line">Person.prototype.setAge = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">"111"</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Student</span> (<span class="params">name, age, price</span>) </span>&#123;</span><br><span class="line">  Person.call(<span class="keyword">this</span>, name, age)</span><br><span class="line">  <span class="keyword">this</span>.price = price</span><br><span class="line">  <span class="keyword">this</span>.setScore = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123; &#125;</span><br><span class="line">&#125;</span><br><span class="line">Student.prototype = <span class="keyword">new</span> Person()</span><br><span class="line">Student.prototype.constructor = Student<span class="comment">//组合继承也是需要修复构造函数指向的</span></span><br><span class="line">Student.prototype.sayHello = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123; &#125;</span><br><span class="line"><span class="keyword">var</span> s1 = <span class="keyword">new</span> Student(<span class="string">'Tom'</span>, <span class="number">20</span>, <span class="number">15000</span>)</span><br><span class="line"><span class="keyword">var</span> s2 = <span class="keyword">new</span> Student(<span class="string">'Jack'</span>, <span class="number">22</span>, <span class="number">14000</span>)</span><br><span class="line"><span class="built_in">console</span>.log(s1)</span><br></pre></td></tr></table></figure>
+<p><img src="https://raw.githubusercontent.com/Picsong/cloudimg/master/20190503150428.png" alt></p>
+<p>这种方式融合原型链继承和构造函数的优点，是 JavaScript 中最常用的继承模式。不过也存在缺点就是无论在什么情况下，都会调用两次构造函数：一次是在创建子类型原型的时候，另一次是在子类型构造函数的内部，子类型最终会包含父类型对象的全部实例属性，但我们不得不在调用子类构造函数时重写这些属性。</p>
+<p><strong>优点</strong>：</p>
+<ul>
+<li>可以继承实例属性/方法，也可以继承原型属性/方法</li>
+<li>不存在引用属性共享问题</li>
+<li>可传参</li>
+<li>函数可复用</li>
+</ul>
+<p><strong>缺点</strong>：调用了两次父类构造函数，生成了两份实例</p>
+<h2 id="组合继承优化1"><a href="#组合继承优化1" class="headerlink" title="组合继承优化1"></a>组合继承优化1</h2><p><strong>这种方式通过父类原型和子类原型指向同一对象，子类可以继承到父类的公有方法当做自己的公有方法，而且不会初始化两次实例方法/属性，避免的组合继承的缺点</strong>。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span> (<span class="params">name, age</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.name = name,</span><br><span class="line">  <span class="keyword">this</span>.age = age,</span><br><span class="line">  <span class="keyword">this</span>.setAge = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123; &#125;</span><br><span class="line">&#125;</span><br><span class="line">Person.prototype.setAge = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">"111"</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Student</span> (<span class="params">name, age, price</span>) </span>&#123;</span><br><span class="line">  Person.call(<span class="keyword">this</span>, name, age)</span><br><span class="line">  <span class="keyword">this</span>.price = price</span><br><span class="line">  <span class="keyword">this</span>.setScore = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123; &#125;</span><br><span class="line">&#125;</span><br><span class="line">Student.prototype = Person.prototype <span class="comment">//共享原型模式</span></span><br><span class="line">Student.prototype.sayHello = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123; &#125;</span><br><span class="line"><span class="keyword">var</span> s1 = <span class="keyword">new</span> Student(<span class="string">'Tom'</span>, <span class="number">20</span>, <span class="number">15000</span>)</span><br><span class="line"><span class="built_in">console</span>.log(s1)</span><br></pre></td></tr></table></figure>
+<p><img src="https://raw.githubusercontent.com/Picsong/cloudimg/master/20190503150645.png" alt></p>
+<p>但这种方式没办法辨别是对象是子类还是父类实例化</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(s1 <span class="keyword">instanceof</span> Student, s1 <span class="keyword">instanceof</span> Person)<span class="comment">//true true</span></span><br><span class="line"><span class="built_in">console</span>.log(s1.constructor)<span class="comment">//Person</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>PS: instanceof 操作符，官方解释是，前一个对象是不是后一个构造函数构造出来的，其实正确的理解应该这样理解：前一个的原型链上有没有后一个的原型。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">s1 instanceof Person  //true</span><br><span class="line">s1 instanceof Object  //true</span><br><span class="line">let arr = [];</span><br><span class="line">arr instanceof Array  //true</span><br><span class="line">arr instanceof Object //true</span><br><span class="line">s1 instanceof Array //false</span><br></pre></td></tr></table></figure>
+<p><strong>优点</strong>：不会初始化两次实例方法/属性，避免的组合继承的缺点</p>
+<p><strong>缺点</strong>：没办法辨别是实例是子类还是父类创造的，子类和父类的构造函数指向是同一个。而且当子类或者父类任何一个修改了原型都会，引起另一个的变化。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Student.prototype.sex = <span class="string">"male"</span></span><br><span class="line"><span class="built_in">console</span>.log(s1.sex) <span class="comment">//male</span></span><br><span class="line"><span class="keyword">let</span> p1 = <span class="keyword">new</span> Person()</span><br><span class="line"><span class="built_in">console</span>.log(p1.sex) <span class="comment">//male</span></span><br><span class="line"><span class="comment">//可以看到，字类修改了原型后，父类的也跟着变化了。</span></span><br></pre></td></tr></table></figure>
+<h2 id="组合继承优化2"><a href="#组合继承优化2" class="headerlink" title="组合继承优化2"></a>组合继承优化2</h2><p><strong>借助原型可以基于已有的对象来创建对象，var B = Object.create(A)以A对象为原型，生成了B对象。B继承了A的所有属性和方法。</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span> (<span class="params">name, age</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.name = name,</span><br><span class="line">  <span class="keyword">this</span>.age = age</span><br><span class="line">&#125;</span><br><span class="line">Person.prototype.setAge = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">"111"</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Student</span> (<span class="params">name, age, price</span>) </span>&#123;</span><br><span class="line">  Person.call(<span class="keyword">this</span>, name, age)</span><br><span class="line">  <span class="keyword">this</span>.price = price</span><br><span class="line">  <span class="keyword">this</span>.setScore = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123; &#125;</span><br><span class="line">&#125;</span><br><span class="line">Student.prototype = <span class="built_in">Object</span>.create(Person.prototype)<span class="comment">//核心代码</span></span><br><span class="line">Student.prototype.constructor = Student<span class="comment">//核心代码</span></span><br><span class="line"><span class="keyword">var</span> s1 = <span class="keyword">new</span> Student(<span class="string">'Tom'</span>, <span class="number">20</span>, <span class="number">15000</span>)</span><br><span class="line"><span class="built_in">console</span>.log(s1 <span class="keyword">instanceof</span> Student, s1 <span class="keyword">instanceof</span> Person) <span class="comment">// true true</span></span><br><span class="line"><span class="built_in">console</span>.log(s1.constructor) <span class="comment">//Student</span></span><br><span class="line"><span class="built_in">console</span>.log(s1)</span><br></pre></td></tr></table></figure>
+<p><img src="https://raw.githubusercontent.com/Picsong/cloudimg/master/20190503152405.png" alt></p>
+<p>这种模式就解决了我们上一个中的问题，现在两个原型之间多了一个对象来做中间层交接，从而做到了，修改原型，不会引起另一个的更改。下面一种继承，原理其实也是和这一种一样的，只是写法的差异。</p>
+<h2 id="圣杯模式"><a href="#圣杯模式" class="headerlink" title="圣杯模式"></a>圣杯模式</h2><p>我们之间看代码：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">inherit</span>(<span class="params">C,P</span>)</span>&#123; <span class="comment">//C就是Child,P就是Parent</span></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">F</span>(<span class="params"></span>)</span>&#123;&#125;;</span><br><span class="line">    F.prototype = P.prototype;</span><br><span class="line">    C.prototype = <span class="keyword">new</span> F();</span><br><span class="line">    <span class="comment">//这里和上面的原理是一样的，用了一个中间对象做交接，</span></span><br><span class="line">    <span class="comment">//C.prototype = Object.create(P.prototype)   //是一样的。</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>我们再优化优化，封装一个完整的函数.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> inherit = (<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> F = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;;</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params">C,P</span>)</span>&#123;</span><br><span class="line">        F.prototype = P.prototype;</span><br><span class="line">        C.prototype = <span class="keyword">new</span> F();</span><br><span class="line">        C.prototype.constructor = C;</span><br><span class="line">        C.prototype.uber = P.prototype;<span class="comment">//这里是保存一下，它超类的信息，</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;())</span><br></pre></td></tr></table></figure>
+<p>这样通过立即执行函数和闭包，我们既可以使用F函数，又可以不让它出现在我们的真正的继承函数中（即返回的那个函数）。    </p>
+<h2 id="ES6中class-的继承"><a href="#ES6中class-的继承" class="headerlink" title="ES6中class 的继承"></a>ES6中class 的继承</h2><p>ES6中引入了class关键字，class可以通过extends关键字实现继承，还可以通过static关键字定义类的静态方法,这比 ES5 的通过修改原型链实现继承，要清晰和方便很多。</p>
+<p>ES5 的继承，实质是先创造子类的实例对象this，然后再将父类的方法添加到this上面（Parent.apply(this)）。ES6 的继承机制完全不同，实质是先将父类实例对象的属性和方法，加到this上面（所以必须先调用super方法），然后再用子类的构造函数修改this。</p>
+<p><strong>需要注意的是，class关键字只是原型的语法糖，JavaScript继承仍然是基于原型实现的</strong>。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line">  <span class="comment">//调用类的构造方法</span></span><br><span class="line">  <span class="keyword">constructor</span>(name, age) &#123;</span><br><span class="line">    <span class="keyword">this</span>.name = name</span><br><span class="line">    <span class="keyword">this</span>.age = age</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">//定义一般的方法</span></span><br><span class="line">  showName () &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"调用父类的方法"</span>)</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.name, <span class="keyword">this</span>.age);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> p1 = <span class="keyword">new</span> Person(<span class="string">'kobe'</span>, <span class="number">39</span>)</span><br><span class="line"><span class="built_in">console</span>.log(p1)</span><br><span class="line"><span class="comment">//定义一个子类</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Student</span> <span class="keyword">extends</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>(name, age, salary) &#123;</span><br><span class="line">    <span class="keyword">super</span>(name, age)<span class="comment">//通过super调用父类的构造方法</span></span><br><span class="line">    <span class="keyword">this</span>.salary = salary</span><br><span class="line">  &#125;</span><br><span class="line">  showName () &#123;<span class="comment">//在子类自身定义方法</span></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"调用子类的方法"</span>)</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.name, <span class="keyword">this</span>.age, <span class="keyword">this</span>.salary);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> s1 = <span class="keyword">new</span> Student(<span class="string">'wade'</span>, <span class="number">38</span>, <span class="number">1000000000</span>)</span><br><span class="line"><span class="built_in">console</span>.log(s1)</span><br><span class="line">s1.showName()</span><br></pre></td></tr></table></figure>
+<p><img src="https://raw.githubusercontent.com/Picsong/cloudimg/master/20190503153554.png" alt></p>
+<p><strong>优点</strong>：语法简单易懂,操作更方便</p>
+<p><strong>缺点</strong>：并不是所有的浏览器都支持class关键字</p>
+<h2 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a><strong>参考文章</strong></h2><p><a href="https://www.cnblogs.com/humin/p/4556820.html" target="_blank" rel="noopener">JS继承的实现方式</a></p>
+<p><a href="https://my.oschina.net/u/3953786/blog/2992314" target="_blank" rel="noopener">js继承的常用6种</a></p>
+<p><a href="https://my.oschina.net/u/3953786/blog/2992314" target="_blank" rel="noopener">pandajs的继承的4个阶段</a></p>
+<p><a href="http://www.w3school.com.cn/js/pro_js_inheritance_implementing.asp" target="_blank" rel="noopener">ECMAScript 继承机制实现</a></p>
+
+      
+    </div>
+    
+    
+    
+	
+	<div>
+	
+		<div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">------------Thank you for your reading at the end of this article.--------------</div>
+    
+</div>
+	
+	</div>
+	<div>
+      
+        ﻿
+<div class="my_post_copyright">
+  <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+  <!-- JS库 sweetalert 我看你 -->
+  <script type="text/javascript" src="http://jslibs.wuxubj.cn/sweetalert_mini/jquery-1.7.1.min.js"></script>
+  <script src="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.mini.css">
+  <p><span>本文标题:</span><a href="/2019/04/11/手摸手带你学JS第五篇/">手摸手带你学JS第五篇</a></p>
+  <p><span>文章作者:</span><a href="/" title="访问 彭松 的个人博客">彭松</a></p>
+  <p><span>发布时间:</span>2019年04月11日 - 21:04</p>
+  <p><span>最后更新:</span>2019年05月03日 - 15:05</p>
+  <p><span>原始链接:</span><a href="/2019/04/11/手摸手带你学JS第五篇/" title="手摸手带你学JS第五篇">https://picsong.top/2019/04/11/手摸手带你学JS第五篇/</a>
+    <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://picsong.top/2019/04/11/手摸手带你学JS第五篇/" aria-label="复制成功！"></i></span>
+  </p>
+  <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+</div>
+<script> 
+    var clipboard = new Clipboard('.fa-clipboard');
+    clipboard.on('success', $(function(){
+      $(".fa-clipboard").click(function(){
+        swal({   
+          title: "",   
+          text: '复制成功',   
+          html: false,
+          timer: 500,   
+          showConfirmButton: false
+        });
+      });
+    })); 
+</script>
+
+      
+	  </div>
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持前端技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/打赏/wechatpay.jpg" alt="彭松 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/打赏/alipay.jpg" alt="彭松 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/手摸手/" rel="tag"><i class="fa fa-tag"></i> 手摸手</a>
+          
+            <a href="/tags/JS基础/" rel="tag"><i class="fa fa-tag"></i> JS基础</a>
+          
+            <a href="/tags/原型/" rel="tag"><i class="fa fa-tag"></i> 原型</a>
+          
+            <a href="/tags/继承/" rel="tag"><i class="fa fa-tag"></i> 继承</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/04/09/手摸手带你学JS第四篇/" rel="next" title="手摸手带你学JS第四篇">
+                <i class="fa fa-chevron-left"></i> 手摸手带你学JS第四篇
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/touxiang.jpg" alt="彭松">
+            
+              <p class="site-author-name" itemprop="name">彭松</p>
+              <p class="site-description motion-element" itemprop="description">记录美好生活</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/Picsong" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:312465087@qq.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://example.com/" title="Title" target="_blank">Title</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.github.com" title="Github" target="_blank">Github</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.zhihu.com" title="知乎" target="_blank">知乎</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#原型"><span class="nav-number">1.</span> <span class="nav-text">原型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#原型链"><span class="nav-number">2.</span> <span class="nav-text">原型链</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#原型链总结"><span class="nav-number">3.</span> <span class="nav-text">原型链总结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#继承"><span class="nav-number">4.</span> <span class="nav-text">继承</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#原型链继承"><span class="nav-number">5.</span> <span class="nav-text">原型链继承</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#经典继承"><span class="nav-number">6.</span> <span class="nav-text">经典继承</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#组合继承"><span class="nav-number">7.</span> <span class="nav-text">组合继承</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#组合继承优化1"><span class="nav-number">8.</span> <span class="nav-text">组合继承优化1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#组合继承优化2"><span class="nav-number">9.</span> <span class="nav-text">组合继承优化2</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#圣杯模式"><span class="nav-number">10.</span> <span class="nav-text">圣杯模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ES6中class-的继承"><span class="nav-number">11.</span> <span class="nav-text">ES6中class 的继承</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考文章"><span class="nav-number">12.</span> <span class="nav-text">参考文章</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="heart">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">彭松</span>
+
+  
+</div>
+
+
+
+
+
+
+        
+<div class="busuanzi-count">
+	<script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user">访客总量</i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye">访问总量</i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+  <span class="post-meta-divider">|</span>
+  
+  <div class="theme-info">
+	<div class="powered-by"><i class="fa fa-user-md"></i></div>
+	<span class="post-count">博客全站共 35k 字</span>
+	</div>
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("YQ9lYqSoRVrUj3HIF1RQgtBT-gzGzoHsz", "fK9mYaUe63VqehPIfuPuXpYj");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+   <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;"></canvas> 
+   <script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
+   <script type="text/javascript" src="/js/src/fireworks.js"></script>
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/tororo.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":true},"log":false});</script></body>
+</html>

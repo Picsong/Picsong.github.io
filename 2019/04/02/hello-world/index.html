@@ -100,7 +100,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://raw.githubusercontent.com/Picsong/cloudimg/master/20190429225719.jpg">
 <meta property="og:image" content="http://with.muyunyun.cn/5e451855ccc9017708b57164f9e221c6.jpg-400">
-<meta property="og:updated_time" content="2019-04-29T14:57:54.858Z">
+<meta property="og:updated_time" content="2019-05-03T06:45:25.662Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="React极速入门2">
 <meta name="twitter:description" content="跟着我们上一篇内容继续走，开始实现我们的“hello，world”，本篇实现了第一个hello,world,和关于jsx以及React虚拟元素知识。">
@@ -403,7 +403,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1k
+                  982
                 </span>
               
 
@@ -458,13 +458,13 @@
 <p>上面的和下面的实例代码完全等效  </p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">const element = React.createElement(</span><br><span class="line">  &apos;h1&apos;,</span><br><span class="line">  &#123;className: &apos;greeting&apos;&#125;,</span><br><span class="line">  &apos;Hello, world!&apos;</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
 <p>所以以下两种方式在页面渲染，最终都是一样的。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">let h1Ele = React.createElement(&apos;h1&apos;, null, &apos;hello world&apos;);//通过React创建一个h1的虚拟dom节点，其实就是一个h1节点的描述对象</span><br><span class="line"></span><br><span class="line">ReactDOM.render(h1Ele, document.querySelector(&apos;#root&apos;));//使用ReactDOM的render方法将虚拟节点转换并添加到指定的节点之中</span><br><span class="line"></span><br><span class="line">ReactDOM.render(&lt;ul&gt;就写下中文&lt;/ul&gt;, document.querySelector(&apos;#root&apos;));//这个就是jsx帮我们做了剩下的事</span><br></pre></td></tr></table></figure>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> h1Ele = React.createElement(<span class="string">'h1'</span>, <span class="literal">null</span>, <span class="string">'hello world'</span>);<span class="comment">//通过React创建一个h1的虚拟dom节点，其实就是一个h1节点的描述对象</span></span><br><span class="line"></span><br><span class="line">ReactDOM.render(h1Ele, <span class="built_in">document</span>.querySelector(<span class="string">'#root'</span>));<span class="comment">//使用ReactDOM的render方法将虚拟节点转换并添加到指定的节点之中</span></span><br><span class="line"></span><br><span class="line">ReactDOM.render(<span class="xml"><span class="tag">&lt;<span class="name">ul</span>&gt;</span>就写下中文<span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span>, <span class="built_in">document</span>.querySelector(<span class="string">'#root'</span>));<span class="comment">//这个就是jsx帮我们做了剩下的事</span></span><br></pre></td></tr></table></figure>
 <p>但是你也发现了这样一个一个创建dom不是太慢了吗，当我们需要创建多个同样结构的时候怎么办？</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">let ulEle = React.createElement(&apos;ul&apos;,//第一个参数</span><br><span class="line">	 &#123;//第二个参数,如果通过迭代的方式生成第三个参数的内容时，要添加key属性要唯一</span><br><span class="line">	        key: &apos;ul0&apos;,//时react内部的算法会用，有唯一性和稳定性</span><br><span class="line">	        style: &#123; background: &apos;lightblue&apos; &#125;//样式写在这里，用&#123;&#125;表达式包裹</span><br><span class="line">	    &#125;,</span><br><span class="line">	    [&apos;HTML&apos;, &apos;CSS&apos;, &apos;JS&apos;].map(item =&gt; React.createElement(&apos;li&apos;, &#123; key: item, style: &#123; color: &apos;red&apos; &#125; &#125;, item)))</span><br><span class="line">	ReactDOM.render(ulEle, document.querySelector(&apos;#root&apos;));</span><br><span class="line">console.log(ulEle);</span><br></pre></td></tr></table></figure>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> ulEle = React.createElement(<span class="string">'ul'</span>,<span class="comment">//第一个参数</span></span><br><span class="line">	 &#123;<span class="comment">//第二个参数,如果通过迭代的方式生成第三个参数的内容时，要添加key属性要唯一</span></span><br><span class="line">	        key: <span class="string">'ul0'</span>,<span class="comment">//时react内部的算法会用，有唯一性和稳定性</span></span><br><span class="line">	        style: &#123; <span class="attr">background</span>: <span class="string">'lightblue'</span> &#125;<span class="comment">//样式写在这里，用&#123;&#125;表达式包裹</span></span><br><span class="line">	    &#125;,</span><br><span class="line">	    [<span class="string">'HTML'</span>, <span class="string">'CSS'</span>, <span class="string">'JS'</span>].map(<span class="function"><span class="params">item</span> =&gt;</span> React.createElement(<span class="string">'li'</span>, &#123; <span class="attr">key</span>: item, <span class="attr">style</span>: &#123; <span class="attr">color</span>: <span class="string">'red'</span> &#125; &#125;, item)))</span><br><span class="line">	ReactDOM.render(ulEle, <span class="built_in">document</span>.querySelector(<span class="string">'#root'</span>));</span><br><span class="line"><span class="built_in">console</span>.log(ulEle);</span><br></pre></td></tr></table></figure>
 <p>但是有了jsx为什么我们不用呢？</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">const pp = (</span><br><span class="line">	    &lt;ul&gt;</span><br><span class="line">	        &lt;li&gt;HTML&lt;/li&gt;</span><br><span class="line">	        &lt;li style=&#123;&#123; color: &apos;red&apos; &#125;&#125;&gt;CSS&lt;/li&gt;</span><br><span class="line">	        &lt;li onClick=&#123;() =&gt; console.log(1)&#125;&gt;JS&lt;/li&gt;</span><br><span class="line">	    &lt;/ul&gt;</span><br><span class="line">	)</span><br><span class="line">ReactDOM.render(pp, document.querySelector(&apos;#root&apos;));</span><br></pre></td></tr></table></figure>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> pp = (</span><br><span class="line">	    &lt;ul&gt;</span><br><span class="line">	        &lt;li&gt;HTML&lt;<span class="regexp">/li&gt;</span></span><br><span class="line"><span class="regexp">	        &lt;li style=&#123;&#123; color: 'red' &#125;&#125;&gt;CSS&lt;/</span>li&gt;</span><br><span class="line">	        &lt;li onClick=&#123;() =&gt; <span class="built_in">console</span>.log(<span class="number">1</span>)&#125;&gt;JS&lt;<span class="regexp">/li&gt;</span></span><br><span class="line"><span class="regexp">	    &lt;/u</span>l&gt;</span><br><span class="line">	)</span><br><span class="line">ReactDOM.render(pp, <span class="built_in">document</span>.querySelector(<span class="string">'#root'</span>));</span><br></pre></td></tr></table></figure>
 <p>我们还可以再改进一下。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">const p1 = (</span><br><span class="line">	    &lt;ul&gt;</span><br><span class="line">	        &#123;</span><br><span class="line">	            [&apos;HTML&apos;, &apos;CSS&apos;, &apos;JS&apos;].map(e =&gt; &lt;li key=&#123;e&#125; style=&#123;&#123; color: &apos;#312465&apos; &#125;&#125;&gt;&#123;e&#125;&lt;/li&gt;)//li里面的内容也要用&#123;包起来&#125;，不然内容都是e</span><br><span class="line">	        &#125;</span><br><span class="line">	    &lt;/ul&gt;</span><br><span class="line">	)</span><br><span class="line">ReactDOM.render(p1, document.querySelector(&apos;#root&apos;));</span><br></pre></td></tr></table></figure>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> p1 = (</span><br><span class="line">	    &lt;ul&gt;</span><br><span class="line">	        &#123;</span><br><span class="line">	            [<span class="string">'HTML'</span>, <span class="string">'CSS'</span>, <span class="string">'JS'</span>].map(<span class="function"><span class="params">e</span> =&gt;</span> &lt;li key=&#123;e&#125; style=&#123;&#123; <span class="attr">color</span>: <span class="string">'#312465'</span> &#125;&#125;&gt;&#123;e&#125;&lt;<span class="regexp">/li&gt;)/</span><span class="regexp">/li里面的内容也要用&#123;包起来&#125;，不然内容都是e</span></span><br><span class="line"><span class="regexp">	        &#125;</span></span><br><span class="line"><span class="regexp">	    &lt;/u</span>l&gt;</span><br><span class="line">	)</span><br><span class="line">ReactDOM.render(p1, <span class="built_in">document</span>.querySelector(<span class="string">'#root'</span>));</span><br></pre></td></tr></table></figure>
 <p><em>jsx其实本质也是转换成了使用React.creatElement创建的内容，只是我们的脚手架中的工具帮我们监听着jsx语法的代码出现，就会帮我们转换了，应为脚手架中使用了webpake，webpake里面用到了babel（就是专门转换jsx语法的工具）</em></p>
 <h3 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h3><p><code>JSX</code> 经过 babel 编译为 React.createElement() 的形式, 其返回结果就是 <code>Virtual DOM</code>, 最后通过 ReactDOM.render() 将 Virtual DOM 转化为真实的 DOM 展现在界面上。流程图如下:</p>
 <p><img src="http://with.muyunyun.cn/5e451855ccc9017708b57164f9e221c6.jpg-400" alt></p>
@@ -500,7 +500,7 @@
   <p><span>本文标题:</span><a href="/2019/04/02/hello-world/">React极速入门2</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 彭松 的个人博客">彭松</a></p>
   <p><span>发布时间:</span>2019年04月02日 - 22:04</p>
-  <p><span>最后更新:</span>2019年04月29日 - 22:04</p>
+  <p><span>最后更新:</span>2019年05月03日 - 14:05</p>
   <p><span>原始链接:</span><a href="/2019/04/02/hello-world/" title="React极速入门2">https://picsong.top/2019/04/02/hello-world/</a>
     <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://picsong.top/2019/04/02/hello-world/" aria-label="复制成功！"></i></span>
   </p>
@@ -670,7 +670,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-count">15</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -692,7 +692,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-count">21</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -827,7 +827,7 @@
   
   <div class="theme-info">
 	<div class="powered-by"><i class="fa fa-user-md"></i></div>
-	<span class="post-count">博客全站共 30k 字</span>
+	<span class="post-count">博客全站共 35k 字</span>
 	</div>
 </div>
 
